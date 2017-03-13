@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Infomation</title>
+	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+ 	<script src="jquery/jquery-3.1.1.min.js"></script>
+ 	<script src="jquery/bootstrap.min.js"></script>
+	<style type="text/css">
+		body {
+			background: url('image/bg_infomation1.jpg') no-repeat fixed;
+			background-size: cover;
+		}
+		.info-header {
+			color:#000fff;
+			border-bottom: 1px solid #00ffff;
+		}
+		.margin{
+			margin: 40px;
+		}
+		#content{
+			margin: 20px;
+		}
+		.info{
+			font-weight: bold;
+			vertical-align: bottom;
+		}
+		.left{
+			text-align: right;
+		}
+		.info, .left{
+			font-size: 1.2em;
+		}
+		.not_empty{
+			color: #ff0000;
+		}
+		#header{
+			border-bottom: 1px solid black;
+			
+			height: 100px;
+		}
+		#footer{
+			border-top: 1px solid black;
+			
+			height: 170px;
+		}
+		a{
+			text-decoration: none;
+			color: #000000;
+		}
+		p{
+			margin: 10px;
+			padding: 2px;
+		}
+		#ctent{
+			margin: 10px;
+			padding: 5px;
+		}
+		#lichsu, #thegame, #thedt{
+			border: 2px solid #000fff;
+			border-radius: 0 0 10px 10px;
+		}
+		.user{
+			margin-top: 50px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<button class="btn btn-primary" onclick="Play()">Play</button>
+			<button class="btn btn-primary" onclick="Logout()">Đăng xuất</button>
+			<button class="btn btn-primary" onclick="Coin()">Quản lý ví tiền</button>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<img src="image/gekko.png">
+		</div>
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2 user">
+			<img src="image/img_user.jpeg" width="40px" height="40px">
+			<span>quyenhua0403</span>
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 margin">
+	<div class="info-header"><h1>Thông tin người chơi</h1></div>
+	<div class="row" id="content">
+		<form class="form-horizontal" action="">
+
+			<div class="form-group">
+			  <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Họ và Tên</label>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			    	<span class="info">Hứa Thị Tố Quyên</span>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Tên đăng nhập</label>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			    	<span class="info">quyenhua0403</span>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Email</label>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			    	<span class="info">huathitoquyen0403@gmail.com</span>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Giới tính</label>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			    	<span class="info">Nữ</span>
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Ngày sinh</label>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			    	<span class="info">04 - 03 - 1995</span>
+			    </div>
+			</div>
+			<br>
+			<div class="form-group">
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
+			      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#change-info">Thay đổi thông tin</button>
+			      <div id="change-info" class="collapse" style="margin-top: 10px">
+			      	<form>
+			
+			<div class="form-group">
+			  <label for="hoten" class="col-sm-4 control-label">Họ và Tên<span class="not_empty">*</span></label>
+			    <div class="col-sm-8">
+			      <input type="text" class="form-control" id="hoten" placeholder="">
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label for="tendangnhap" class="col-sm-4 control-label">Tên đăng nhập<span class="not_empty">*</span></label>
+			    <div class="col-sm-8">
+			      <input type="text" class="form-control" id="tendangnhap" placeholder="">
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label for="email" class="col-sm-4 control-label">Email<span class="not_empty">*</span></label>
+			    <div class="col-sm-8">
+			      <input type="email" class="form-control" id="email" placeholder="">
+			    </div>
+			</div>
+
+			<div class="form-group">
+			  <label for="gioitinh" class="col-sm-4 control-label">Giới tính</label>
+			    <div class="col-sm-5">
+			      <label class="radio-inline">
+					  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
+				  </label>
+				  <label class="radio-inline">
+					  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
+				  </label>
+			    </div>
+			</div>
+
+			<div class="form-group">
+				<div class="row">
+		        <label for="birthday" class="col-sm-4 control-label">Ngày sinh</label></div>
+		        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+		            <select name="year" id="year" size="1"></select>
+		        </div>   
+		        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+
+		            <select name="month" id="month" size="1"></select>
+		        </div>
+		        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+		            <select name="day" id="day" size="1">
+						<option value=" " selected="selected">-- Ngày --</option>
+					</select>
+		        </div>
+		    </div>
+			<br>
+			<div class="form-group">
+			    <div class="col-sm-offset-8 col-sm-4">
+			      <button type="submit" class="btn btn-secondary">Đăng kí</button>
+			    </div>
+			</div>
+			
+		</form>
+			      </div>
+			      <script type="text/javascript">
+
+			var seYear = $('#year');
+		    var date = new Date();
+		    var cur = date.getFullYear();
+
+		    seYear.append('<option value="">-- Năm --</option>');
+		    for (var i = cur; i >= 1920; i--) {
+		        seYear.append('<option value="'+i+'">Năm '+i+'</option>');
+		    };
+		    
+		    //Tháng tự động điền vào select
+		    var seMonth = $('#month');
+		    var date = new Date();
+		    
+		    var month=new Array();
+		    for(var i = 0; i<12 ; i++){
+		    	month[i] = "Tháng " + (i+1);
+		    }
+
+		    seMonth.append('<option value="">-- Tháng --</option>');
+		    for (var i = 0; i < 12; i++) {
+		        seMonth.append('<option value="'+i+'">'+month[i]+'</option>');
+		    };
+		    
+		    //Ngày tự động điền vào select
+		    function dayList(month,year) {
+		        var day = new Date(year, month, 0);
+		        return day.getDate();
+		    }    
+		    
+		    $('#year, #month').change(function(){
+		        //Đoạn code lấy id không viết bằng jQuery để phù hợp với đoạn code bên dưới
+		        var y = document.getElementById('year');
+		        var m = document.getElementById('month');
+		        var d = document.getElementById('day');
+		        
+		        var year = y.options[y.selectedIndex].value;
+		        var month = m.options[m.selectedIndex].value;
+		        var day = d.options[d.selectedIndex].value;
+		        if (day == ' ') {
+		            var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
+		            d.options.length = 0;
+		            d.options[d.options.length] = new Option('-- Ngày --',' ');
+		            for (var i = 1; i <= days; i++)
+		            d.options[d.options.length] = new Option(i,i);
+		        }
+		    });
+
+			function validateForm()
+			{ 
+				var name = document.getElementById('tendangnhap').value;
+			    var pwd = document.getElementById('password').value;
+			    var repwd = document.getElementById('re-password').value;
+			    var email = document.getElementById('email').value;
+			    var hoten = document.getElementById('hoten').value;
+			    var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
+			    var reg_pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
+			   
+				if (hoten == ''){
+		    		alert('Vui lòng nhập Họ và Tên');
+			    }
+			    else if(name.length < 2 || name.length > 30)
+			    {
+			    	alert('Độ dài Họ và Tên từ 2 đến 30 kí tự');
+			    }
+			    else if (name == ''){
+		    		alert('Vui lòng nhập Tên đăng nhập');
+			    }
+			    else if(name.length < 2 || name.length > 30)
+			    {
+			    	alert('Độ dài Tên đăng nhập từ 2 đến 30 kí tự');
+			    }
+			    else if(email == ''){
+			    	alert('Vui lòng nhập email');
+			    }
+			    else if(reg_mail.test(email) == false){
+			    	alert('Email sai định dạng. Ex: example@abc.com');
+			    }
+			    else if(pwd == ''){
+			    	alert('Vui lòng nhập Mật khẩu');
+			    }
+			    else if(pwd.length < 6 || pwd.length > 30)
+			    {
+			    	alert('Độ dài Mật khẩu từ 6 kí tự');
+			    }
+			    else if(reg_pwd.test(pwd) == false)
+			    {
+			    	alert('Mật khẩu cần có chữ cái, chữ số, ký tự đặc biệt');
+			    }
+			    else if(repwd == ''){
+			    	alert('Vui lòng nhập Nhập lại mật khẩu');
+			    }
+			    else if(repwd != pwd){
+			    	alert("Mật khẩu không khớp, vui lòng nhập lại");
+			    }
+			    else{
+			    	return true;
+			    }
+			    return false;
+			}
+		</script>
+			      </div>
+			    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+			      <button type="button" class="btn btn-primary" data-toggle="collapse" data-target="#change-password">Thay đổi mật khẩu</button>
+			        <div id="change-password" class="collapse" style="margin-top: 10px">
+    					<form>
+    						<div class="form-group">
+			 					<label for="old-pwd" class="col-sm-4 control-label">Mật khẩu cũ</label>
+			    				<div class="col-sm-8">
+			     					<input type="password" class="form-control" id="old-pwd" placeholder="">
+			    				</div>
+							</div>
+							<div class="form-group">
+			 					<label for="new-pwd" class="col-sm-4 control-label">Mật khẩu mới</label>
+			    				<div class="col-sm-8">
+			     					<input type="password" class="form-control" id="new-pwd" placeholder="">
+			    				</div>
+							</div>
+							<div class="form-group">
+			 					<label for="re-pwd" class="col-sm-4 control-label">Nhập lại mật khẩu mới</label>
+			    				<div class="col-sm-8">
+			     					<input type="password" class="form-control" id="re-pwd" placeholder="">
+			    				</div>
+							</div>
+							<div class="col-sm-offset-3 col-sm-9">
+			    				<button type="submit" class="btn btn-secondary">OK</button>
+			    				<button type="button" class="btn btn-secondary">Hủy</button>
+			    			</div>
+    					</form>
+  					</div>
+			    </div>
+			</div>
+			
+		</form>
+	</div>
+	</div>
+	</div>
+	<div id="footer">
+		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+			<img src="image/gekko.png">
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<p>Email: <a href="#">abc@gmail.com</a></p>
+			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
+			<p>Số điện thoại: 0986.980.391</p>
+			<p>Link: 
+				<a href="#" alt="facebook">Facebook |</a>
+				<a href="#" alt="switter"> Switter</a>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function Play(){
+			//vào chơi game
+		}
+		function Logout(){
+			location.href="index.html";
+		}
+		function Coin(){
+			location.href="coin.html";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Top</title>
+	<link rel="stylesheet" type="text/css" href="bootstraps/bootstrap.css">
+	<style type="text/css">
+		body{
+			background: url(image/bg_home.png) no-repeat center fixed;
+			background-size: cover;
+		}
+		#title{
+			font-size: 4em;
+			font-weight: bold;
+			color: #ff0000;
+			font-family: cursive;
+		}
+		#pcham{
+			font-size: 1em;
+			font-family: sans-serif;
+			margin-left: 40px;
+		}
+		div.tab {
+			overflow: hidden;
+			border-bottom: 2px solid #000fff; 
+			padding-left: 20px;
+			margin-top: 20px;
+		}
+
+		/* Style the links inside the tab */
+		div.tab a {
+			width: 250px;
+			float: left;
+			display: block;
+			color: black;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+			transition: 0.3s;
+			font-size: 17px;
+		}
+
+		/* Change background color of links on hover */
+		div.tab a:hover {
+			background-color: #00ffff;
+			border: 1px solid #000fff;
+			border-bottom: none;
+			border-radius: 5px 5px 0 0;
+		}
+
+		/* Create an active/current tablink class */
+		div.tab a:focus, .active {
+			background-color: #0fffff;
+			border: 1px solid #000fff;
+			border-bottom: none;
+			border-radius: 5px 5px 0 0;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+			display: none;
+			padding: 6px 12px;
+		}
+		.tablinks{
+			font-size: 2.2em;
+			font-weight: bold;
+		}
+		.margin{
+			margin: 20px;
+			margin-top: 50px;
+		}
+		.th-gd{
+			background-color: #000fff;
+			color: #ffffff;
+			font-size: 1.2em;
+			text-align: center;
+		}
+		table, tr, td{
+			border:1px solid black;
+		}
+		td, .color{
+			color: #000000;
+			font-size: 1.2em;
+			text-align: center;
+		}
+		.content{
+			border: 1px solid #000fff;
+			border-radius: 5px; 
+			margin-top: 10px;
+			margin-bottom: 10px;
+			height: 100%;
+		}
+		#header{
+			border-bottom: 1px solid black;
+			height: 100px;
+		}
+		#footer{
+			border-top: 1px solid black;
+			height: 170px;
+		}
+		#topdiem, #topsong{
+			border: 2px dashed black;
+			border-radius: 10px;
+			padding: 10px;
+			margin: 10px;
+		}
+		a{
+			text-decoration: none;
+			color: #000000;
+		}
+		p{
+			margin: 10px;
+			padding: 2px;
+		}
+	</style>
+</head>
+<body>
+	<div id="header">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<button class="btn btn-primary" onclick="Play()">Play</button>
+			<button class="btn btn-primary" onclick="Register()">Đăng kí</button>
+			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
+			<button class="btn btn-primary" onclick="Infomation()">Thông tin cá nhân</button>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<img src="image/gekko.png">
+		</div>
+	</div>
+	<div class="row">
+	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 margin">
+	<div class="row">
+		<div id="topdiem" class="color">
+			<h3>Top người chơi đạt điểm cao nhất</h3>
+			<table class="table">
+				<tr>
+					<th class="th-gd">Top</th>
+					<th class="th-gd">User name</th>
+					<th class="th-gd">Level</th>
+					<th class="th-gd">Score</th>
+				</tr>
+				<tr>
+					<td>
+					<img src="image/top1.jpg" width="50px" height="40px">
+					</td>
+					<td>nguyenhoang23</td>
+					<td>20</td>
+					<td>1450</td>
+				</tr>
+				<tr>
+					<td><img src="image/top2.jpg" width="50px" height="40px"></td>
+					<td>tieuhua2304</td>
+					<td>18</td>
+					<td>1285</td>
+				</tr>
+				<tr>
+					<td><img src="image/top3.jpg" width="50px" height="40px"></td>
+					<td>lovingyou2233</td>
+					<td>15</td>
+					<td>910</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>thugian1234</td>
+					<td>10</td>
+					<td>500</td>
+				</tr>
+				<tr>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+				</tr>
+				<tr>
+					<td>78</td>
+					<td>quyenhua0403</td>
+					<td>2</td>
+					<td>40</td>
+				</tr>
+			</table>
+		</div>
+		</div>
+
+		<div class="row">
+		<div id="topsong" class="color">
+			<h3>Top những bài nhạc được chơi nhiều nhất</h3>
+
+			<table class="table">
+				<tr>
+					<th class="th-gd">Top</th>
+					<th class="th-gd">Song name</th>
+					<th class="th-gd">Times played</th>
+					<th class="th-gd">High score</th>
+				</tr>
+				<tr>
+					<td>
+					<img src="image/top1.jpg" width="50px" height="40px">
+					</td>
+					<td>nguyenhoang23</td>
+					<td>20</td>
+					<td>1450</td>
+				</tr>
+				<tr>
+					<td><img src="image/top2.jpg" width="50px" height="40px"></td>
+					<td>tieuhua2304</td>
+					<td>18</td>
+					<td>1285</td>
+				</tr>
+				<tr>
+					<td><img src="image/top3.jpg" width="50px" height="40px"></td>
+					<td>lovingyou2233</td>
+					<td>15</td>
+					<td>910</td>
+				</tr>
+				<tr>
+					<td>4</td>
+					<td>thugian1234</td>
+					<td>10</td>
+					<td>500</td>
+				</tr>
+				<tr>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+					<td>...</td>
+				</tr>
+				<tr>
+					<td>78</td>
+					<td>quyenhua0403</td>
+					<td>2</td>
+					<td>40</td>
+				</tr>
+			</table>
+		</div>
+		</div>		
+	</div>
+	</div>
+	<div id="footer">
+		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+			<img src="image/gekko.png">
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<p>Email: <a href="#">abc@gmail.com</a></p>
+			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
+			<p>Số điện thoại: 0986.980.391</p>
+			<p>Link: 
+				<a href="#" alt="facebook">Facebook |</a>
+				<a href="#" alt="switter"> Switter</a>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function Play(){
+			//vào chơi game
+		}
+		function Register(){
+			location.href="register.html";
+		}
+		function Login(){
+			location.href="login.html";
+		}
+		function Infomation(){
+			location.href="infomation.html";
+		}
+	</script>
+</body>
+</html>
