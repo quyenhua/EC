@@ -104,10 +104,7 @@
 			margin: 10px;
 			padding: 5px;
 		}
-		#lichsu, #thegame, #thedt{
-			border: 2px solid #000fff;
-			border-radius: 0 0 10px 10px;
-		}
+		
 		.user{
 			margin-top: 50px;
 		}
@@ -116,6 +113,7 @@
 <body>
 	<div id="header">
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<button class="btn btn-primary" onclick="Home()">Home</button>
 			<button class="btn btn-primary" onclick="Play()">Play</button>
 			<button class="btn btn-primary" onclick="Register()">Đăng kí</button>
 			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
@@ -135,7 +133,7 @@
 				<div class="col-lg-offset-3 col-md-offset-2 col-sm-offset-2 col-lg-8 col-md-8 col-sm-10 col-xs-10">
 					<h1>Quản lý ví tiền</h1>
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 icon">
-						<img class="img-resposive" src="" alt="coin" width="40px" height="40px">
+						<img class="img-resposive" src="image/icon.png" alt="coin" width="40px" height="40px">
 						<p>0 xu</p>
 					</div>
 					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail">
@@ -350,6 +348,9 @@
 		</div>
 	</div>
 	<script type="text/javascript">
+		function Home(){
+			location.href="top.html";
+		}
 		function Play(){
 			//vào chơi game
 		}

@@ -45,6 +45,7 @@
 <body>
 	<div id="header">
 		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<button class="btn btn-primary" onclick="Home()">Home</button>
 			<button class="btn btn-primary" onclick="Play()">Play</button>
 			<button class="btn btn-primary" onclick="Register()">Đăng kí</button>
 		</div>
@@ -120,6 +121,10 @@
 		    	return true;
 		    }
 		    return false;
+		}
+
+		function Home(){
+			location.href="top.html";
 		}
 		function Play(){
 			//vào chơi game
