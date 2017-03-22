@@ -16,19 +16,19 @@
 			margin-top: 70px;
 		}
 		.register-header {
-			margin: 10px;
-			color:#00CC00;
-			border-bottom: 2px solid #00ff00;
+			margin: 30px;
+			color:#000fff;
+			border-bottom: 2px solid #000fff;
 		}
 		.not_empty{
 			color: #ff0000;
 		}
 		#header{
-			border-bottom: 1px solid black;
-			height: 100px;
+			border-bottom: 1px solid #000fff;
+			height: 130px;
 		}
 		#footer{
-			border-top: 1px solid black;
+			border-top: 1px solid #000fff;
 			height: 170px;
 		}
 		a{
@@ -58,9 +58,10 @@
 			<button class="btn btn-primary" onclick="Home()">Home</button>
 			<button class="btn btn-primary" onclick="Play()">Play</button>
 			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
+			<button class="btn btn-primary" onclick="Introduction()">Hướng dẫn</button>
 		</div>
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-			<img src="image/gekko.png">
+			<img src="image/logo.png">
 		</div>
 	</div>
 	<div class="row">
@@ -180,7 +181,7 @@
 		        var d = document.getElementById('day');
 		        
 		        var year = y.options[y.selectedIndex].value;
-		        var month = m.options[m.selectedIndex].value;
+		        var month = m.options[m.selectedIndex+1].value;
 		        var day = d.options[d.selectedIndex].value;
 		        if (day == ' ') {
 		            var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
@@ -239,6 +240,7 @@
 			    	alert("Mật khẩu không khớp, vui lòng nhập lại");
 			    }
 			    else{
+			    	alert("Đăng ký thành công!!!");
 			    	return true;
 			    }
 			    return false;
@@ -251,7 +253,7 @@
 	</div>
 	<div id="footer">
 		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-			<img src="image/gekko.png">
+			<img src="image/logo.png" width="200px" height="100px">
 		</div>
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 			<p>Email: <a href="#">abc@gmail.com</a></p>
@@ -272,6 +274,9 @@
 		}
 		function Login(){
 			location.href="login.html";
+		}
+		function Introduction(){
+			location.href="introduction.html";
 		}
 	</script>
 </body>

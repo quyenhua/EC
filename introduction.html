@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Hướng dẫn</title>
+	<meta charset="utf-8">
+	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+	<style type="text/css">
+		body{
+			background: url(image/introduction.png) no-repeat center fixed;
+			background-size: cover;
+		}
+		#header{
+			border-bottom: 1px solid #000fff;
+			height: 100px;
+		}
+		#footer{
+			border-top: 1px solid #000fff;
+			height: 170px;
+		}
+		a{
+			text-decoration: none;
+			color: #000000;
+		}
+		p{
+			margin: 10px;
+			padding: 2px;
+		}
+		h1{
+			color:#000fff;
+			border-bottom: 2px solid #000fff;
+			margin: 30px;
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<div class="row" id="header">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+			<button class="btn btn-primary" onclick="Home()">Home</button>
+			<button class="btn btn-primary" onclick="Play()">Play</button>
+			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
+			<button class="btn btn-primary" onclick="Register()">Đăng ký</button>
+			<button class="btn btn-primary" onclick="Infomation()">Thông tin cá nhân</button>
+		</div>
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+			<img src="image/logo.png">
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 body">
+			<div class="register-header"><h1>Hướng dẫn game Gekko</h1></div>
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
+			<img src="image/logo.png" width="200px" height="100px">
+		</div>
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<p>Email: <a href="#">abc@gmail.com</a></p>
+			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
+			<p>Số điện thoại: 0986.980.391</p>
+			<p>Link: 
+				<a href="#" alt="facebook">Facebook |</a>
+				<a href="#" alt="switter"> Switter</a>
+			</p>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function Home(){
+			location.href="top.html";
+		}
+		function Play(){
+			//vào chơi game
+		}
+		function Login(){
+			location.href="login.html";
+		}
+		function Register(){
+			location.href="register.html";
+		}
+		function Infomation(){
+			location.href="infomation.html";
+		}
+	</script>
+</body>
+</html>

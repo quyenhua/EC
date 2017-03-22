@@ -2,8 +2,8 @@
 <html>
 <head>
 	<meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Login</title>
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
 	<style type="text/css">
@@ -20,16 +20,17 @@
 			margin: auto;
 		}
 		h1{
-			color:#00CC00;
-	font-size: 3em;
-	text-align: center;
+			color:#000fff;
+			border-bottom: 2px solid #000fff;
+			margin: 30px;
+			padding: 10px;
 		}
 		#header{
-			border-bottom: 1px solid black;
-			height: 100px;
+			border-bottom: 1px solid #000fff;
+			height: 130px;
 		}
 		#footer{
-			border-top: 1px solid black;
+			border-top: 1px solid #000fff;
 			height: 170px;
 		}
 		a{
@@ -48,53 +49,52 @@
 			<button class="btn btn-primary" onclick="Home()">Home</button>
 			<button class="btn btn-primary" onclick="Play()">Play</button>
 			<button class="btn btn-primary" onclick="Register()">Đăng kí</button>
+			<button class="btn btn-primary" onclick="Introduction()">Hướng dẫn</button>
 		</div>
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-			<img src="image/gekko.png">
+			<img src="image/logo.png">
 		</div>
 	</div>
 	<div class="row">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
-	<div class="register-header"><h1>Đăng nhập</h1></div>
-	<div class="row">
-		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-		<form class="form-horizontal" action="top.html" onsubmit="return validateForm()">
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
+			<div class="register-header"><h1>Đăng nhập</h1></div>
+			<div class="row">
+				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
+					<form class="form-horizontal" action="top.html" onsubmit="return validateForm()">
 
-			<div class="form-group">
-			  <label for="tendangnhap" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Tên đăng nhập</label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="text" class="form-control" id="tendangnhap" placeholder="">
-			    </div>
-			</div>
-			
-			<div class="form-group">
-			  <label for="password" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Mật khẩu</label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="password" class="form-control" id="password" placeholder="">
-			    </div>
-			</div>
+						<div class="form-group">
+							<label for="tendangnhap" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Tên đăng nhập</label>
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+								<input type="text" class="form-control" id="tendangnhap" placeholder="">
+							</div>
+						</div>
 
-			<div class="form-group">
-			    <div class="col-sm-offset-4 col-sm-8">
-			      <a href="#">Quên mật khẩu?</a>
-			    </div>
-			</div>
+						<div class="form-group">
+							<label for="password" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Mật khẩu</label>
+							<div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+								<input type="password" class="form-control" id="password" placeholder="">
+							</div>
+						</div>
 
-			<div class="form-group">
-			    <div class="col-sm-offset-10 col-sm-2">
-			      <button type="submit" class="btn btn-primary">Đăng nhập</button>
-			    </div>
-			</div>
+						<div class="form-group">
+							<div class="col-sm-offset-4 col-sm-8">
+								<a href="#" style="color: #0000ff">Quên mật khẩu?</a>
+							</div>
+						</div>
 
-			
-		</form>
+						<div class="form-group">
+							<div class="col-sm-offset-10 col-sm-2">
+								<button type="submit" class="btn btn-primary">Đăng nhập</button>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
-	</div>
-	</div>
 	</div>
 	<div id="footer">
 		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-			<img src="image/gekko.png">
+			<img src="image/logo.png" width="200px" height="100px">
 		</div>
 		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
 			<p>Email: <a href="#">abc@gmail.com</a></p>
@@ -112,15 +112,17 @@
 			var name = document.getElementById('tendangnhap').value;
 			var pwd = document.getElementById('password').value;
 			if (name == ''){
-	    		alert('Vui lòng nhập tên đăng nhập');
-		    }
-		    else if(pwd == ''){
-		    	alert('Vui lòng nhập mật khẩu');
-		    }
-		    else{
-		    	return true;
-		    }
-		    return false;
+				alert('Vui lòng nhập tên đăng nhập');
+			}
+			else if(pwd == ''){
+				alert('Vui lòng nhập mật khẩu');
+			}
+			else{
+				document.cookie = "username = " + name;
+				alert("Đăng nhập thành công!!!");
+				return true;
+			}
+			return false;
 		}
 
 		function Home(){
@@ -131,6 +133,9 @@
 		}
 		function Register(){
 			location.href="register.html";
+		}
+		function Introduction(){
+			location.href="introduction.html";
 		}
 	</script>
 </body>

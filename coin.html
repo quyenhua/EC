@@ -13,9 +13,9 @@
 			margin: 10px;
 		}
 		h1{
-			color: #000fff;
+			color: #ee55aa;
 			font-size: 2em;
-			border-bottom:1px solid black;
+			border-bottom:1px solid #ee55aa;
 		}
 		div.tab {
 			overflow: hidden;
@@ -85,11 +85,11 @@
 			margin-top: 20px;
 		}
 		#header{
-			border-bottom: 1px solid black;
+			border-bottom: 1px solid #ee55aa;
 			height: 100px;
 		}
 		#footer{
-			border-top: 1px solid black;
+			border-top: 1px solid #ee55aa;
 			height: 170px;
 		}
 		a{
@@ -108,6 +108,15 @@
 		.user{
 			margin-top: 50px;
 		}
+		.btn{
+			font-size: 0.9em;
+		}
+		.table{
+			border: 1px solid #000fff;
+		}
+		.icon{
+			margin-top: 10px;
+		}
 	</style>
 </head>
 <body>
@@ -116,6 +125,7 @@
 			<button class="btn btn-primary" onclick="Home()">Home</button>
 			<button class="btn btn-primary" onclick="Play()">Play</button>
 			<button class="btn btn-primary" onclick="Register()">Đăng kí</button>
+			<button class="btn btn-primary" onclick="Introduction()">Hướng dẫn</button>
 			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
 			<button class="btn btn-primary" onclick="Infomation()">Info</button>
 		</div>
@@ -134,7 +144,7 @@
 					<h1>Quản lý ví tiền</h1>
 					<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3 icon">
 						<img class="img-resposive" src="image/icon.png" alt="coin" width="40px" height="40px">
-						<p>0 xu</p>
+						<p id="soxu">0 xu</p>
 					</div>
 					<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9 detail">
 						<p>Hỗ trợ người chơi:</p>
@@ -203,7 +213,7 @@
 
 							<div class="form-group">
 								<div class="col-sm-offset-7 col-sm-5">
-									<button type="submit" class="btn btn-primary">Nạp thẻ</button>
+									<button type="submit" class="btn btn-primary" onclick="Napthe()">Nạp thẻ</button>
 								</div>
 							</div>
 						</form>
@@ -274,7 +284,7 @@
 
 							<div class="form-group">
 								<div class="col-sm-offset-7 col-sm-5">
-									<button type="submit" class="btn btn-primary">Nạp thẻ</button>
+									<button type="submit" class="btn btn-primary" onclick="Napdt()">Nạp thẻ</button>
 								</div>
 							</div>
 						</form>
@@ -329,6 +339,10 @@
 						evt.currentTarget.className += " active";
 					}
 					document.getElementById("defaultOpen").click();
+					function Napthe(){
+						var so_xu = document.getElementById("soxu");
+						soxu.innerHTML = "50 xu";
+					}
 				</script>
 			</div>
 		</div>
@@ -362,6 +376,9 @@
 		}
 		function Infomation(){
 			location.href="infomation.html";
+		}
+		function Introduction(){
+			location.href="introduction.html";
 		}
 	</script>
 </body>
