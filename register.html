@@ -4,16 +4,13 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Register</title>
+	<title>Đăng kí</title>
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
 	<script src="jquery/jquery-latest.js"></script>
 	<style type="text/css">
 		body {
-			background: url('image/bg_register.jpg') no-repeat center fixed;
+			background: url('image/bg_register.png') no-repeat center fixed;
 			background-size: cover;
-		}
-		.body{
-			margin-top: 70px;
 		}
 		.register-header {
 			margin: 30px;
@@ -24,12 +21,14 @@
 			color: #ff0000;
 		}
 		#header{
-			border-bottom: 1px solid #000fff;
-			height: 130px;
+			margin-left: 370px;
+			height: 200px;
+			margin-top: 50px;
 		}
 		#footer{
-			border-top: 1px solid #000fff;
+			border-top: 4px solid rgba(0, 0, 222, 0.3);
 			height: 170px;
+			background-color: rgba(0, 200, 222, 0.4);
 		}
 		a{
 			text-decoration: none;
@@ -50,64 +49,61 @@
 		.form{
 			margin: 10px;
 		}
+		#content{
+			margin-left: 50px;
+		}
 	</style>
 </head>
 <body>
-	<div id="header">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-			<button class="btn btn-primary" onclick="Home()">Home</button>
-			<button class="btn btn-primary" onclick="Play()">Play</button>
-			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
-			<button class="btn btn-primary" onclick="Introduction()">Hướng dẫn</button>
-		</div>
+	<div class="row" id="header">
 		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
 			<img src="image/logo.png">
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" id="content">
 	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
 	<div class="register-header"><h1>Đăng kí</h1></div>
-	<div class="row">
+	<div class="row" id="content">
 		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form">
 		<form method="post" class="form-horizontal" action="login.html" onsubmit="return validateForm();">
 			
 			<div class="form-group">
-			  <label for="hoten" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Họ và Tên<span class="not_empty">*</span></label>
+			  <label for="hoten" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Họ và Tên<span class="not_empty">*</span></label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 			      <input type="text" class="form-control" id="hoten" placeholder="">
 			    </div>
 			</div>
 
 			<div class="form-group">
-			  <label for="tendangnhap" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Tên đăng nhập<span class="not_empty">*</span></label>
+			  <label for="tendangnhap" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Tên đăng nhập<span class="not_empty">*</span></label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 			      <input type="text" class="form-control" id="tendangnhap" placeholder="">
 			    </div>
 			</div>
 
 			<div class="form-group">
-			  <label for="email" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Email<span class="not_empty">*</span></label>
+			  <label for="email" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Email<span class="not_empty">*</span></label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 			      <input type="email" class="form-control" id="email" placeholder="">
 			    </div>
 			</div>
 
 			<div class="form-group">
-			  <label for="password" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Mật khẩu<span class="not_empty">*</span></label>
+			  <label for="password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Mật khẩu<span class="not_empty">*</span></label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 			      <input type="password" class="form-control" id="password" placeholder="">
 			    </div>
 			</div>
 
 			<div class="form-group">
-			  <label for="re-password" class="col-lg-4 col-md-4 col-sm-4 col-xs-8 control-label">Nhập lại mật khẩu<span class="not_empty">*</span></label>
+			  <label for="re-password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Nhập lại mật khẩu<span class="not_empty">*</span></label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
 			      <input type="password" class="form-control" id="re-password" placeholder="">
 			    </div>
 			</div>
 
 			<div class="form-group">
-			  <label for="gioitinh" class="col-lg-4 col-md-4 col-sm-4 col-xs-4 control-label">Giới tính</label>
+			  <label for="gioitinh" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Giới tính</label>
 			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			      <label class="radio-inline">
 					  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
@@ -119,7 +115,7 @@
 			</div>
 
 			<div class="form-group">
-		        <label for="birthday" class="col-lg-4 col-md-4 col-sm-4 col-xs-12	 control-label">Ngày sinh</label>
+		        <label for="birthday" class="col-lg-3 col-md-3 col-sm-3 col-xs-3	 control-label">Ngày sinh</label>
 		        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3" style="margin-top:8px;">
 		            <select name="year" id="year" size="1"></select>
 		        </div>   
@@ -135,8 +131,9 @@
 		    </div>
 			<br>
 			<div class="form-group">
-			    <div class="col-sm-offset-10 col-sm-2">
+			    <div class="col-sm-offset-6">
 			      <button type="submit" class="btn btn-primary">Đăng kí</button>
+			      <button type="reset" class="btn btn-primary">Hủy</button>
 			    </div>
 			</div>
 			
@@ -225,13 +222,9 @@
 			    else if(pwd == ''){
 			    	alert('Vui lòng nhập Mật khẩu');
 			    }
-			    else if(pwd.length < 6 || pwd.length > 30)
-			    {
-			    	alert('Độ dài Mật khẩu từ 6 kí tự');
-			    }
 			    else if(reg_pwd.test(pwd) == false)
 			    {
-			    	alert('Mật khẩu cần có chữ cái, chữ số, ký tự đặc biệt');
+			    	alert('Mật khẩu cần dài ít nhất 6 kí tự, có chữ cái, chữ số, ký tự đặc biệt');
 			    }
 			    else if(repwd == ''){
 			    	alert('Vui lòng nhập Nhập lại mật khẩu');
@@ -251,7 +244,7 @@
 	</div>
 	</div>
 	</div>
-	<div id="footer">
+	<div class="row" id="footer">
 		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
 			<img src="image/logo.png" width="200px" height="100px">
 		</div>
@@ -259,25 +252,11 @@
 			<p>Email: <a href="#">abc@gmail.com</a></p>
 			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
 			<p>Số điện thoại: 0986.980.391</p>
-			<p>Link: 
-				<a href="#" alt="facebook">Facebook |</a>
-				<a href="#" alt="switter"> Switter</a>
+			<p>
+				<a href="https://www.facebook.com/" alt="facebook"><img src="image/face_icon.png" width="40px" height="40px"></a>
+				<a href="https://twitter.com/" alt="switter"><img src="image/twitter_icon.png" width="40px" height="40px"></a>
 			</p>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function Home(){
-			location.href="top.html";
-		}
-		function Play(){
-			//vào chơi game
-		}
-		function Login(){
-			location.href="login.html";
-		}
-		function Introduction(){
-			location.href="introduction.html";
-		}
-	</script>
 </body>
 </html>

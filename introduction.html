@@ -4,18 +4,21 @@
 	<title>Hướng dẫn</title>
 	<meta charset="utf-8">
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<style type="text/css">
 		body{
 			background: url(image/introduction.png) no-repeat center fixed;
 			background-size: cover;
 		}
 		#header{
-			border-bottom: 1px solid #000fff;
-			height: 130px;
+			margin-left: 370px;
+			height: 200px;
+			margin-top: 50px;
 		}
 		#footer{
-			border-top: 1px solid #000fff;
+			border-top: 4px solid rgba(0, 0, 222, 0.3);
 			height: 170px;
+			background-color: rgba(0, 200, 222, 0.4);
 		}
 		a{
 			text-decoration: none;
@@ -31,32 +34,240 @@
 			margin: 30px;
 			padding: 10px;
 		}
+		#content{
+			margin-left: 50px;
+		}
+		.introduction{
+			font-size: 1.2em;
+		}
+		#over {
+			display: none;
+			background: #000;
+			position: fixed;
+			left: 0;
+			top: 0;
+			width: 100%;
+			height: 100%;
+			opacity: 0.8;
+			z-index: 999;
+		}
+		a, a:visited, a:active{
+			text-decoration:none;
+		}
+		.feedback
+		{
+			background-color:#00dd34;
+			height:auto;
+			width:500px;
+			font-family:Verdana, Arial, Helvetica, sans-serif;
+			font-size:14px;
+			padding-bottom:5px;
+			display:none;
+			overflow:hidden;
+			position:absolute;
+			z-index:99999;
+			top:10%;
+			left:50%;
+			margin-left:-300px;
+		}
+
+		.feedback h4{
+			margin-left: 10px;
+		}
+
+		.feedback .feedback_title
+		{
+			color:white;
+			font-size:16px;
+			padding:8px 0 5px 8px;
+			text-align:left;
+		}
+
+		.feedback-content label {
+			display: block;
+			padding-bottom: 7px;
+		}
+
+		.feedback-content span {
+			display: block;
+		}
+		.feedback-content
+		{
+			padding-left:35px;
+			background-color:white;
+			margin-left:5px;
+			margin-right:5px;
+			height:auto;
+			padding-top:15px;
+			overflow:hidden;
+		}
+
+		.img-close {
+			float: right;
+			margin-left: -35px;
+			margin-top: -35px;
+		}
+		.button{
+			display: inline-block;
+			min-width: 46px;
+			text-align: center;
+			color: #444;
+			font-size: 14px;
+			height: 36px;
+			padding: 0px 8px;
+			line-height: 36px;
+			border-radius: 4px;
+			transition: all 0.218s ease 0s;
+			border: 1px solid #DCDCDC;
+			background-color: #F5F5F5;
+			background-image: -moz-linear-gradient(center top , #F5F5F5, #F1F1F1);
+			cursor: pointer;
+		}
+		.button:hover{
+			border: 1px solid #DCDCDC;
+			text-decoration: none;
+			-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+			-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
+			box-shadow: 0 2px 2px rgba(0,0,0,0.1);
+		}
+		.feedback input
+		{
+			border:1px solid #D5D5D5;
+			border-radius:5px;
+			box-shadow:1px 1px 5px rgba(0,0,0,.07) inset;
+			color:black;
+			font:12px/25px "Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+			height:28px;
+			padding:0px 8px;
+			word-spacing:0.1em;
+			width:300px;
+		}
+		.feedback textarea{
+			border:1px solid #D5D5D5;
+			border-radius:5px;
+			box-shadow:1px 1px 5px rgba(0,0,0,.07) inset;
+			color:black;
+			font:12px/25px "Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+			padding:0px 8px;
+			word-spacing:0.1em;
+			width: 400px;
+			height: 280px;
+		}
+		.submit-button{
+			display: inline-block;
+			padding: auto;
+			margin-bottom: 50px;
+			float: right;
+			margin-right: 50px;
+			width: 150px;
+		}
+		.btn-top {
+			border: medium none;
+			bottom: 20px;
+			cursor: pointer;
+			height: 50px;
+			outline: medium none;
+			padding: 0;
+			position: fixed;
+			right: 20px;
+			width: 50px;
+			z-index: 9999;
+		}
 	</style>
 </head>
 <body>
 	<div class="row" id="header">
-		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-			<button class="btn btn-primary" onclick="Home()">Home</button>
-			<button class="btn btn-primary" onclick="Play()">Play</button>
-			<button class="btn btn-primary" onclick="Login()">Đăng nhập</button>
-			<button class="btn btn-primary" onclick="Register()">Đăng ký</button>
-			<button class="btn btn-primary" onclick="Infomation()">Thông tin cá nhân</button>
-		</div>
 		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			<img src="image/logo.png">
 		</div>
 	</div>
-	<div class="row">
+	<div class="row" id="content">
 		<div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 body">
-			<div class="register-header"><h1>Hướng dẫn game Gekko</h1></div>
+			<div class="register-header"><h1>Hướng dẫn game Moonlight</h1></div>
 			<div class="row">
-				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12">
-
+				<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 introduction">
+					<ul>
+						<li>
+							<h2>Hướng dẫn chơi game:</h2>
+							<p>Moonlight là game chơi nhạc khá đơn giản, người chơi được chơi miễn phí các vòng đầu tiên mà không cần đăng kí tài khoản. Tuy nhiên sau các vòng miễn phí thì người chơi cần đăng kí tài khoản, nạp xu để có thể mua bài hát hoặc chơi các vòng khác.</p>
+							<p>Mỗi vòng chơi là một bài nhạc, màn hình sẽ hiển thị những thanh ngang chạy từ trên xuống, mỗi thanh tương ứng với một nốt nhạc, người chơi sẽ chạm vào thanh ngang đó để tạo ra các nốt nhạc, nếu người chơi chạm vào thanh không đúng lúc hoặc quá trễ, lúc đó thanh ngang đã biến mất thì người chơi sẽ mất điểm, cũng như không hoàn thành tốt bài nhạc.</p>
+							<p>Sau đây là các bước bắt đầu chơi game:</p>
+							<ol type="1">
+								<li>Người chơi nhấn nút Chơi trên thanh Menu để vào game</li>
+								<li>Khi vào game, người chơi sẽ vòng chơi, các vòng chơi có hình ổ khóa là những vòng chơi người chơi chưa được phép chơi, người chơi chỉ chơi được những vòng cho phép.</li>
+								<li>Sau khi chọn vòng chơi, trang web chơi game sẽ hiển thị, người chơi sẽ bắt đầu chơi game.</li>
+							</ol>
+						</li>
+						<li>
+							<h2>Cách tính điểm:</h2>
+							<p>Như đã hướng dẫn trên, người chơi sẽ chạm vào các thanh ngang để tạo ra nốt nhạc, mỗi nốt nhạc đúng sẽ ứng với một điểm, khi người dùng đúng càng nhiều nốt liên tiếp thì điểm sẽ được tính khác nhau, điểm nhiều hơn.</p>
+							<ul>
+								<li>Đúng 1 nốt: 1 điểm</li>
+								<li>Đúng 2 nốt: 3 điểm</li>
+								<li>..... (du thiên tính điểm)</li>
+							</ul>
+						</li>
+						<li>
+							<h2>Hướng dẫn nạp xu</h2>
+							<p>Có 2 hình thức nạp xu để các thành viên nạp xu mua bài hát hay hoặc mua vòng chơi:</p>
+							<ol style="1">
+								<li>Nạp xu bằng thẻ game: Với hình thức này người chơi chỉ cần nhập số seri và mã thẻ là có thể nạp xu vào tài khoản của mình.</li>
+								<li>Nạp xu bằng thẻ điện thoại: Hình thức nạp xu này cho phép người chơi nạp xu với các nhà mạng phổ biến: Viettel, Vinaphone, Mobiphone, Vietnammobile, Beeline. Sau khi chọn nhà mạng, người dùng nhập số seri và mã thẻ tương tự như nạp xu bằng thẻ game.</li>
+							</ol>
+							<p>Người chơi cũng có thể xem lịch sử giao dịch của mình bằng cách chọn vào tab lịch sử giao dịch, ở đây người chơi có thể xem việc mua bài hát, mua vòng chơi, hoặc việc nạp xu của mình trong bảng một cách rõ ràng.</p>
+						</li>
+					</ul>
+					<p></p>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div id="footer">
+
+	<div class="feedback" id="feedback-box"><h4>Feedback</h4>		
+		<a class="close" href="#">
+			<img class="img-close" title="Close Window" alt="Close" src="image/close.png" width="25px" height="25px" />
+		</a>
+		<form class="feedback-content" action="#" method="post">
+			<label class="username">
+				<label for="username">Tên hoặc email</label>
+				<input id="username" type="text" autocomplete="on" name="username" placeholder="" value="" />
+			</label>
+			<label class="contentname">
+				<label for="contentid">Chủ đề</label>
+				<input id="contentid" type="text" autocomplete="on" name="content" placeholder="" value="" />
+			</label>
+			<label class="content-form">
+				<label for="contentdet">Nội dung</label>
+				<textarea id="contentdet"></textarea>
+			</label>
+			<button class="button submit-button" type="button">Gửi</button>
+		</form>
+	</div>
+	<a class="feedback-window btn-top" href="#feedback-box" alt="Feedback"><img src="image/feedback.png" title="Feedback" width="50px" height="50px"></a>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a.feedback-window').click(function() {
+	        	//lấy giá trị thuộc tính href - chính là phần tử "#feedback-box"
+	        	var feedbackBox = $(this).attr('href');
+		        //cho hiện hộp đăng nhập trong 300ms
+	    	    $(feedbackBox).fadeIn(300);
+	    	    // thêm phần tử id="over" vào sau body
+	        	$('body').append('<div id="over">');
+	        	$('#over').fadeIn(300);
+	        	return false;
+	    	});
+
+			// khi click đóng hộp thoại
+			$(document).on('click', "a.close, #over", function() {
+	 			$('#over, .feedback').fadeOut(300 , function() {
+	 				$('#over').remove();
+	 			});
+	 			return false;
+			});
+		});
+	</script>
+
+	<div class="row" id="footer">
 		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
 			<img src="image/logo.png" width="200px" height="100px">
 		</div>
@@ -64,28 +275,11 @@
 			<p>Email: <a href="#">abc@gmail.com</a></p>
 			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
 			<p>Số điện thoại: 0986.980.391</p>
-			<p>Link: 
-				<a href="#" alt="facebook">Facebook |</a>
-				<a href="#" alt="switter"> Switter</a>
+			<p>
+				<a href="https://www.facebook.com/" alt="facebook"><img src="image/face_icon.png" width="40px" height="40px"></a>
+				<a href="https://twitter.com/" alt="switter"><img src="image/twitter_icon.png" width="40px" height="40px"></a>
 			</p>
 		</div>
 	</div>
-	<script type="text/javascript">
-		function Home(){
-			location.href="top.html";
-		}
-		function Play(){
-			//vào chơi game
-		}
-		function Login(){
-			location.href="login.html";
-		}
-		function Register(){
-			location.href="register.html";
-		}
-		function Infomation(){
-			location.href="infomation.html";
-		}
-	</script>
 </body>
 </html>
