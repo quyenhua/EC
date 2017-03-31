@@ -132,7 +132,12 @@ function SongActivity(p) {
             });
         }
         else {
-            alert("Bạn chưa mở khóa bài hát này");
+            if (confirm('Bạn chưa mở khóa bài hát này, nạp xu để mở?')) {
+                location.href = "coin.html";
+            }
+            else {
+                // Do nothing!
+            }
         }
     };
 
@@ -161,7 +166,7 @@ function SongActivity(p) {
 
     };
     this.onResume = function() {
-        
+
         playList = p.dataSheet.playList;
     };
 }

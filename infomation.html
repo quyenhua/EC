@@ -10,6 +10,13 @@
 	<script src="jquery/bootstrap.min.js"></script>
 	<script src="jquery/jquery-latest.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	
+	<script src="p5js/p5.js" type="text/javascript"></script>
+    <script src="p5js/p5.dom.js" type="text/javascript"></script>
+    <script src="p5js/p5.sound.js" type="text/javascript"></script>
+    <script src="menu_top.js" type="text/javascript"></script>
+    
+    
 	<style type="text/css">
 		body {
 			background: url('image/bg_infomation1.jpg') no-repeat fixed;
@@ -212,9 +219,18 @@
 			width: 50px;
 			z-index: 9999;
 		}
+		canvas {
+            vertical-align: top;
+            
+            z-index:100;
+            position:absolute;
+            left:0px;
+            top:0px;
+        }
 	</style>
 </head>
 <body>
+	<div id='sketch-holder' style="float:left"></div>
 	<div class="row" id="header">
 		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
 			<img src="image/logo.png">
