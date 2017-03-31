@@ -21,7 +21,7 @@ function loadMenu() {
     //todo
     buttonRadius = 20;
     menuRadius = 200;
-    menuText = ["Home", "Play", "Login","Sign up", "Infor", "Help" ];
+    menuText = ["Home", "Play", "Login","Sign up", "Information", "Help" ];
     menuCheck = [false, false, false];
     menuHover = [false, false, false];
     menuTextA = [0, 0, 0, 0,0,0];
@@ -47,7 +47,7 @@ function loadMenu() {
 }
 
 function setup() {
-    var cv = createCanvas(350, 300);
+    var cv = createCanvas(800, 800);
     cv.parent('sketch-holder');
     frameRate(25);
     loadPixels();
@@ -151,14 +151,15 @@ function mousePressed()
 
 function mouseReleased()
 {
+    console.log(menuHover);
     var d = PI / 4 - (menuText.length - 1) * menuDa / 2;
      for (var i = 0; i < menuText.length; ++i) {
          var x = menuRadius * cos(d);
         var y = menuRadius * sin(d);
-        if (distance(x, y, mouseX, mouseY) < buttonRadius)
-        {
+            if (menuHover[i])
             onClickButton(i);
-        }
+            
+        
         menuHover[i] = false;
      }
 }
