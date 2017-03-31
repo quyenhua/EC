@@ -1,0 +1,52 @@
+{
+  "songs": [{
+      "name": "Track 01",
+      "path": "assets/musics/track01.mp3",
+      "note": "assets/musics/track01.json",
+      "open": true
+    }, {
+      "name": "Track 02",
+      "path": "assets/musics/track02.mp3",
+      "note": "assets/musics/track02.json",
+      "open": true
+    }, {
+      "name": "Track 03",
+      "path": "assets/musics/track03.mp3",
+      "note": "assets/musics/track03.json",
+      "open": true
+    },
+
+    {
+      "name": "Track 04",
+      "path": "assets/musics/track04.mp3",
+      "note": "assets/musics/track04.json",
+      "open": true
+    }, {
+      "name": "Track 05",
+      "path": "assets/musics/track05.mp3",
+      "note": "assets/musics/track05.json",
+      "open": false
+    },
+
+    {
+      "name": "Track 06",
+      "path": "assets/musics/track06.mp3",
+      "note": "assets/musics/track06.json",
+      "open": false
+
+    },
+
+    {
+      "name": "Track 07",
+      "path": "assets/musics/track07.mp3",
+      "note": "assets/musics/track07.json",
+      "open": false
+
+    }, {
+      "name": "Track 08",
+      "path": "assets/musics/track08.mp3",
+      "note": "assets/musics/track08.json",
+      "open": false
+    }
+  ]
+}
