@@ -47,7 +47,7 @@ function loadMenu() {
 }
 
 function setup() {
-    var cv = createCanvas(800, 800);
+    var cv = createCanvas(400, 250);
     cv.parent('sketch-holder');
     frameRate(25);
     loadPixels();
