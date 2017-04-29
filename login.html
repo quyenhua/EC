@@ -13,6 +13,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Đăng nhập</title>
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="bootstraps/include.css" type="text/css" />
 	<style type="text/css">
 		body {
 			background: url('image/bg_login.jpg') no-repeat center fixed;
@@ -30,11 +31,6 @@
 			border-bottom: 2px solid #000fff;
 			margin: 30px;
 			padding: 10px;
-		}
-		#header{
-			margin-left: 370px;
-			height: 200px;
-			margin-top: 50px;
 		}
 		#footer{
 			border-top: 4px solid rgba(0, 0, 222, 0.3);
@@ -55,23 +51,13 @@
 		.login{
 			margin-bottom: 30px;
 		}
-		canvas {
-            vertical-align: top;
-            
-            z-index:100;
-            position:absolute;
-            left:0px;
-            top:0px;
-        }
 	</style>
 </head>
 <body>
-	<div id='sketch-holder' style="float:left"></div>
-	<div class="row" id="header">
-		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-			<img src="image/logo.png">
-		</div>
-	</div>
+	<?php
+		include "connect/connect.html";
+		include "include/header.html";
+	?>
 	<div class="row" id="content">
 		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
 			<div class="register-header"><h1>Đăng nhập</h1></div>
@@ -113,20 +99,6 @@
 			</div>
 		</div>
 	</div>
-	<div class="row" id="footer">
-		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-			<img src="image/logo.png" width="200px" height="100px">
-		</div>
-		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-			<p>Email: <a href="#">abc@gmail.com</a></p>
-			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
-			<p>Số điện thoại: 0986.980.391</p>
-			<p>
-				<a href="https://www.facebook.com/" alt="facebook"><img src="image/face_icon.png" width="40px" height="40px"></a>
-				<a href="https://twitter.com/" alt="switter"><img src="image/twitter_icon.png" width="40px" height="40px"></a>
-			</p>
-		</div>
-	</div>
 	<script type="text/javascript">
 		function validateForm()
 		{
@@ -145,6 +117,10 @@
 			}
 			return false;
 		}
-		</script>
+	</script>
+	<?php
+		include "include/feedback.html";
+		include "include/footer.html";
+	?>
 </body>
 </html>
