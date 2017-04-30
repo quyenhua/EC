@@ -4,8 +4,9 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Thông tin người chơi</title>
+	<title>Infomation</title>
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="bootstraps/include.css" type="text/css" />
 	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<script src="jquery/bootstrap.min.js"></script>
 	<script src="jquery/jquery-latest.js"></script>
@@ -45,14 +46,8 @@
 		.not_empty{
 			color: #ff0000;
 		}
-		#header{
-			margin-left: 370px;
-			height: 200px;
-			margin-top: 50px;
-		}
 		#footer{
 			border-top: 4px solid rgba(255, 120, 70, 0.3);
-			height: 170px;
 			background-color: rgba(255, 149, 98, 0.4);
 		}
 		a{
@@ -86,192 +81,51 @@
 		#content{
 			margin-left: 50px;
 		}
-		#over {
-			display: none;
-			background: #000;
-			position: fixed;
-			left: 0;
-			top: 0;
-			width: 100%;
-			height: 100%;
-			opacity: 0.8;
-			z-index: 999;
-		}
-		a, a:visited, a:active{
-			text-decoration:none;
-		}
-		.feedback
-		{
-			background-color:#00dd34;
-			height:auto;
-			width:500px;
-			font-family:Verdana, Arial, Helvetica, sans-serif;
-			font-size:14px;
-			padding-bottom:5px;
-			display:none;
-			overflow:hidden;
-			position:absolute;
-			z-index:99999;
-			top:10%;
-			left:50%;
-			margin-left:-300px;
-		}
-
-		.feedback h4{
-			margin-left: 10px;
-		}
-
-		.feedback .feedback_title
-		{
-			color:white;
-			font-size:16px;
-			padding:8px 0 5px 8px;
-			text-align:left;
-		}
-
-		.feedback-content label {
-			display: block;
-			padding-bottom: 7px;
-		}
-
-		.feedback-content span {
-			display: block;
-		}
-		.feedback-content
-		{
-			padding-left:35px;
-			background-color:white;
-			margin-left:5px;
-			margin-right:5px;
-			height:auto;
-			padding-top:15px;
-			overflow:hidden;
-		}
-
-		.img-close {
-			float: right;
-			margin-left: -35px;
-			margin-top: -35px;
-		}
-		.button{
-			display: inline-block;
-			min-width: 46px;
-			text-align: center;
-			color: #444;
-			font-size: 14px;
-			height: 36px;
-			padding: 0px 8px;
-			line-height: 36px;
-			border-radius: 4px;
-			transition: all 0.218s ease 0s;
-			border: 1px solid #DCDCDC;
-			background-color: #F5F5F5;
-			background-image: -moz-linear-gradient(center top , #F5F5F5, #F1F1F1);
-			cursor: pointer;
-		}
-		.button:hover{
-			border: 1px solid #DCDCDC;
-			text-decoration: none;
-			-moz-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-			-webkit-box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-			box-shadow: 0 2px 2px rgba(0,0,0,0.1);
-		}
-		.feedback input
-		{
-			border:1px solid #D5D5D5;
-			border-radius:5px;
-			box-shadow:1px 1px 5px rgba(0,0,0,.07) inset;
-			color:black;
-			font:12px/25px "Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-			height:28px;
-			padding:0px 8px;
-			word-spacing:0.1em;
-			width:300px;
-		}
-		.feedback textarea{
-			border:1px solid #D5D5D5;
-			border-radius:5px;
-			box-shadow:1px 1px 5px rgba(0,0,0,.07) inset;
-			color:black;
-			font:12px/25px "Droid Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
-			padding:0px 8px;
-			word-spacing:0.1em;
-			width: 400px;
-			height: 280px;
-		}
-		.submit-button{
-			display: inline-block;
-			padding: auto;
-			margin-bottom: 50px;
-			float: right;
-			margin-right: 50px;
-			width: 150px;
-		}
-		.btn-top {
-			border: medium none;
-			bottom: 20px;
-			cursor: pointer;
-			height: 50px;
-			outline: medium none;
-			padding: 0;
-			position: fixed;
-			right: 20px;
-			width: 50px;
-			z-index: 9999;
-		}
-		canvas {
-            vertical-align: top;
-            
-            z-index:100;
-            position:absolute;
-            left:0px;
-            top:0px;
-        }
 	</style>
 </head>
 <body>
-	<div id='sketch-holder' style="float:left"></div>
-	<div class="row" id="header">
-		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-			<img src="image/logo.png">
-		</div>
-	</div>
+	<?php
+		include "include/header.html";
+	?>
 	<div class="row" id="content">
 		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 margin">
-			<div class="info-header"><h1>Thông tin người chơi</h1></div>
+			<div class="info-header"><h1>Infomation</h1></div>
 			<div class="row" id="content">
-				<form class="form-horizontal" action="">
-
+				<?php
+					if($row_user){
+				?>
+				<form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Họ và Tên</label>
+						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Fullname</label>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="name">Hứa Thị Tố Quyên</span>
+							<span class="info" id="name"><?php echo $row_user["fullName"] ?></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Tên đăng nhập</label>
+						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Username</label>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="loginname">quyenhua0403</span>
+							<span class="info" id="loginname"><?php echo $row_user["userName"] ?></span>
 						</div>
 					</div>
 
 					<div class="form-group">
 						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Email</label>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="mail">huathitoquyen0403@gmail.com</span>
+							<span class="info" id="mail"><?php echo $row_user["email"] ?></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Giới tính</label>
+						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Sex</label>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="sex">Nữ</span>
+							<span class="info" id="sex"><?php echo $row_user["sex"] ?></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Ngày sinh</label>
+						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Birthday</label>
 						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
 							<span class="info" id="bday"><span id="datecur">04</span> - <span id="monthcur">03</span> - <span id="yearcur">1995</span></span>
 						</div>
@@ -540,6 +394,9 @@
 						$("#change-password").toggle();
 					}
 				</script>
+				<?php
+				}
+				?>
 			</div>
 		</div>
 	</div>
@@ -564,43 +421,9 @@
 			<button class="button submit-button" type="button">Gửi</button>
 		</form>
 	</div>
-	<a class="feedback-window btn-top" href="#feedback-box" alt="Feedback"><img src="image/feedback.png" title="Feedback" width="50px" height="50px"></a>
-	<script type="text/javascript">
-		$(document).ready(function() {
-			$('a.feedback-window').click(function() {
-	        	//lấy giá trị thuộc tính href - chính là phần tử "#feedback-box"
-	        	var feedbackBox = $(this).attr('href');
-		        //cho hiện hộp đăng nhập trong 300ms
-	    	    $(feedbackBox).fadeIn(300);
-	    	    // thêm phần tử id="over" vào sau body
-	        	$('body').append('<div id="over">');
-	        	$('#over').fadeIn(300);
-	        	return false;
-	    	});
-
-			// khi click đóng hộp thoại
-			$(document).on('click', "a.close, #over", function() {
-	 			$('#over, .feedback').fadeOut(300 , function() {
-	 				$('#over').remove();
-	 			});
-	 			return false;
-			});
-		});
-	</script>
-
-	<div class="row" id="footer">
-		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-			<img src="image/logo.png" width="200px" height="100px">
-		</div>
-		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-			<p>Email: <a href="#">abc@gmail.com</a></p>
-			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
-			<p>Số điện thoại: 0986.980.391</p>
-			<p>
-				<a href="https://www.facebook.com/" alt="facebook"><img src="image/face_icon.png" width="40px" height="40px"></a>
-				<a href="https://twitter.com/" alt="switter"><img src="image/twitter_icon.png" width="40px" height="40px"></a>
-			</p>
-		</div>
-	</div>
+	<?php
+		include "include/feedback.html";
+		include "include/footer.html";
+	?>
 </body>
 </html>

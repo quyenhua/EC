@@ -4,10 +4,11 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Đăng kí</title>
+	<title>Register</title>
 	<link href="bootstraps/bootstrap.css" rel="stylesheet">
+	<link rel="stylesheet" href="bootstraps/include.css" type="text/css" />
 	<script src="jquery/jquery-latest.js"></script>
-	
+	<script src="jquery/jquery-3.1.1.min.js"></script>
 	<script src="p5js/p5.js" type="text/javascript"></script>
     <script src="p5js/p5.dom.js" type="text/javascript"></script>
     <script src="p5js/p5.sound.js" type="text/javascript"></script>
@@ -27,14 +28,8 @@
 		.not_empty{
 			color: #ff0000;
 		}
-		#header{
-			margin-left: 370px;
-			height: 200px;
-			margin-top: 50px;
-		}
 		#footer{
 			border-top: 4px solid rgba(0, 0, 222, 0.3);
-			height: 170px;
 			background-color: rgba(0, 200, 222, 0.4);
 		}
 		a{
@@ -59,220 +54,237 @@
 		#content{
 			margin-left: 50px;
 		}
-		canvas {
-            vertical-align: top;
-            
-            z-index:100;
-            position:absolute;
-            left:0px;
-            top:0px;
-        }
+		
+		.mtop{
+			margin-top:10px;
+			width:80px;
+		}
 	</style>
 </head>
 <body>
-	<div id='sketch-holder' style="float:left"></div>
-	<div class="row" id="header">
-		<div class="col-lg-10 col-md-10 col-sm-10 col-xs-10">
-			<img src="image/logo.png">
-		</div>
-	</div>
+	<?php
+		include "include/header.html";
+	?>
 	<div class="row" id="content">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
-	<div class="register-header"><h1>Đăng kí</h1></div>
-	<div class="row" id="content">
-		<div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 form">
-		<form method="post" class="form-horizontal" action="login.html" onsubmit="return validateForm();">
+		<div class="col-lg-8 col-md-8 col-sm-8 col-xs-12 body">
+			<div class="register-header"><h1>Register</h1></div>
+			<div class="row" id="content">
+				<div class="col-lg-12 col-md-10 col-sm-11 col-xs-12 form">
+					<form method="POST" class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>">
+						<p class="not_empty" id="error"></p>
+						<div class="form-group">
+						  <label for="hoten" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Fullname<span class="not_empty">*</span></label>
+						    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-10">
+						      <input type="text" class="form-control" id="hoten" name="fullname" placeholder="">
+						    </div>
+						</div>
 			
-			<div class="form-group">
-			  <label for="hoten" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Họ và Tên<span class="not_empty">*</span></label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="text" class="form-control" id="hoten" placeholder="">
-			    </div>
-			</div>
-
-			<div class="form-group">
-			  <label for="tendangnhap" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Tên đăng nhập<span class="not_empty">*</span></label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="text" class="form-control" id="tendangnhap" placeholder="">
-			    </div>
-			</div>
-
-			<div class="form-group">
-			  <label for="email" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Email<span class="not_empty">*</span></label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="email" class="form-control" id="email" placeholder="">
-			    </div>
-			</div>
-
-			<div class="form-group">
-			  <label for="password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Mật khẩu<span class="not_empty">*</span></label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="password" class="form-control" id="password" placeholder="">
-			    </div>
-			</div>
-
-			<div class="form-group">
-			  <label for="re-password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Nhập lại mật khẩu<span class="not_empty">*</span></label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
-			      <input type="password" class="form-control" id="re-password" placeholder="">
-			    </div>
-			</div>
-
-			<div class="form-group">
-			  <label for="gioitinh" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Giới tính</label>
-			    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
-			      <label class="radio-inline">
-					  <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
-				  </label>
-				  <label class="radio-inline">
-					  <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
-				  </label>
-			    </div>
-			</div>
-
-			<div class="form-group">
-		        <label for="birthday" class="col-lg-3 col-md-3 col-sm-3 col-xs-3	 control-label">Ngày sinh</label>
-		        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3" style="margin-top:8px;">
-		            <select name="year" id="year" size="1"></select>
-		        </div>   
-		        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3" style="margin-top:8px;">
-
-		            <select name="month" id="month" size="1"></select>
-		        </div>
-		        <div class="col-lg-2 col-md-2 col-sm-2 col-xs-3" style="margin-top:8px;">
-		            <select name="day" id="day" size="1">
-						<option value=" " selected="selected">-- Ngày --</option>
-					</select>
-		        </div>
-		    </div>
-			<br>
-			<div class="form-group">
-			    <div class="col-sm-offset-6">
-			      <button type="submit" class="btn btn-primary">Đăng kí</button>
-			      <button type="reset" class="btn btn-primary">Hủy</button>
-			    </div>
-			</div>
+						<div class="form-group">
+						  <label for="tendangnhap" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Username<span class="not_empty">*</span></label>
+						    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+						      <input type="text" class="form-control" id="tendangnhap" name="username" placeholder="">
+						    </div>
+						</div>
 			
-		</form>
-
-		<!-- Validate -->
-		<script type="text/javascript">
-
-			var seYear = $('#year');
-		    var date = new Date();
-		    var cur = date.getFullYear();
-
-		    seYear.append('<option value="">-- Năm --</option>');
-		    for (var i = cur; i >= 1920; i--) {
-		        seYear.append('<option value="'+i+'">Năm '+i+'</option>');
-		    };
-		    
-		    //Tháng tự động điền vào select
-		    var seMonth = $('#month');
-		    var date = new Date();
-		    
-		    var month=new Array();
-		    for(var i = 0; i<12 ; i++){
-		    	month[i] = "Tháng " + (i+1);
-		    }
-
-		    seMonth.append('<option value="">-- Tháng --</option>');
-		    for (var i = 0; i < 12; i++) {
-		        seMonth.append('<option value="'+i+'">'+month[i]+'</option>');
-		    };
-		    
-		    //Ngày tự động điền vào select
-		    function dayList(month,year) {
-		        var day = new Date(year, month, 0);
-		        return day.getDate();
-		    }    
-		    
-		    $('#year, #month').change(function(){
-		        //Đoạn code lấy id không viết bằng jQuery để phù hợp với đoạn code bên dưới
-		        var y = document.getElementById('year');
-		        var m = document.getElementById('month');
-		        var d = document.getElementById('day');
-		        
-		        var year = y.options[y.selectedIndex].value;
-		        var month = m.options[m.selectedIndex+1].value;
-		        var day = d.options[d.selectedIndex].value;
-		        if (day == ' ') {
-		            var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
-		            d.options.length = 0;
-		            d.options[d.options.length] = new Option('-- Ngày --',' ');
-		            for (var i = 1; i <= days; i++)
-		            d.options[d.options.length] = new Option(i,i);
-		        }
-		    });
-
-			function validateForm()
-			{ 
-				var name = document.getElementById('tendangnhap').value;
-			    var pwd = document.getElementById('password').value;
-			    var repwd = document.getElementById('re-password').value;
-			    var email = document.getElementById('email').value;
-			    var hoten = document.getElementById('hoten').value;
-			    var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
-			    var reg_pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
-			   
-				if (hoten == ''){
-		    		alert('Vui lòng nhập Họ và Tên');
-			    }
-			    else if(name.length < 2 || name.length > 30)
-			    {
-			    	alert('Độ dài Họ và Tên từ 2 đến 30 kí tự');
-			    }
-			    else if (name == ''){
-		    		alert('Vui lòng nhập Tên đăng nhập');
-			    }
-			    else if(name.length < 2 || name.length > 30)
-			    {
-			    	alert('Độ dài Tên đăng nhập từ 2 đến 30 kí tự');
-			    }
-			    else if(email == ''){
-			    	alert('Vui lòng nhập email');
-			    }
-			    else if(reg_mail.test(email) == false){
-			    	alert('Email sai định dạng. Ex: example@abc.com');
-			    }
-			    else if(pwd == ''){
-			    	alert('Vui lòng nhập Mật khẩu');
-			    }
-			    else if(reg_pwd.test(pwd) == false)
-			    {
-			    	alert('Mật khẩu cần dài ít nhất 6 kí tự, có chữ cái, chữ số, ký tự đặc biệt');
-			    }
-			    else if(repwd == ''){
-			    	alert('Vui lòng nhập Nhập lại mật khẩu');
-			    }
-			    else if(repwd != pwd){
-			    	alert("Mật khẩu không khớp, vui lòng nhập lại");
-			    }
-			    else{
-			    	alert("Đăng ký thành công!!!");
-			    	return true;
-			    }
-			    return false;
-			}
-		</script>
-
+						<div class="form-group">
+						  <label for="email" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Email<span class="not_empty">*</span></label>
+						    <div class="col-lg-9 col-md-8 col-sm-8 col-xs-10">
+						      <input type="text" class="form-control" id="email" name="email" placeholder="">
+						    </div>
+						</div>
+			
+						<div class="form-group">
+						  <label for="password" class="col-lg-3 col-md-3 col-sm-3 col-xs-3 control-label">Password<span class="not_empty">*</span></label>
+						    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+						      <input type="password" class="form-control" id="password" name="password" placeholder="">
+						     </div>
+						</div>
+			
+						<div class="form-group">
+						  <label for="re-password" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 control-label">Re-password<span class="not_empty">*</span></label>
+						    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+						      <input type="password" class="form-control" id="re-password" name="re-password" placeholder="">
+						    </div>
+						</div>
+			
+						<div class="form-group">
+						  <label for="gioitinh" class="col-lg-3 col-md-3 col-sm-3 col-xs-2 control-label">Sex</label>
+						    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-12">
+						    	<div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+						      <label class="radio-inline">
+								  <input type="radio" name="sex" id="inlineRadio1" value="Male"> Male
+							  </label>
+							  </div>
+							  <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+							  <label class="radio-inline">
+								  <input type="radio" name="sex" id="inlineRadio2" value="Female"> Female
+							  </label>
+							  </div>
+						    </div>
+						</div>
+			
+						<div class="form-group">
+					        <label for="birthday" class="col-lg-3 col-md-3 col-sm-3 col-xs-6 control-label">Birthday</label>
+					        <div class="col-lg-8 col-md-8 col-sm-8 col-xs-10">
+						        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						            <select name="year" id="year" size="1" class="mtop"></select>
+						        </div>   
+						        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 ">
+						            <select name="month" id="month" size="1" class="mtop"></select>
+						        </div>
+						        <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+						            <select name="day" id="day" size="1" class="mtop">
+										<option value=" " selected="selected">--Date--</option>
+									</select>
+						        </div>
+					        </div>
+					    </div>
+						<br>
+						<div class="form-group">
+						    <div class="col-sm-offset-6">
+						      <button type="submit" class="btn btn-primary" name="submit">Submit</button>
+						      <button type="submit" class="btn btn-primary" name="reset">Cancel</button>
+						    </div>
+						</div>
+					</form>
+		
+				<!-- Validate -->
+					<script type="text/javascript">
+						var seYear = $('#year');
+					    var date = new Date();
+					    var cur = date.getFullYear();
+			
+					    seYear.append('<option value="">--Year--</option>');
+					    for (var i = cur; i >= 1920; i--) {
+					        seYear.append('<option value="'+i+'">'+i+'</option>');
+					    };
+					    
+					    //Tháng tự động điền vào select
+					    var seMonth = $('#month');
+					    var date = new Date();
+					    
+					    var month=new Array();
+					    for(var i = 0; i<12 ; i++){
+					    	month[i] = "" + (i+1);
+					    }
+			
+					    seMonth.append('<option value="">--Month--</option>');
+					    for (var i = 0; i < 12; i++) {
+					        seMonth.append('<option value="'+i+'">'+month[i]+'</option>');
+					    };
+					    
+					    //Ngày tự động điền vào select
+					    function dayList(month,year) {
+					        var day = new Date(year, month, 0);
+					        return day.getDate();
+					    }    
+					    
+					    $('#year, #month').change(function(){
+					        //Đoạn code lấy id không viết bằng jQuery để phù hợp với đoạn code bên dưới
+					        var y = document.getElementById('year');
+					        var m = document.getElementById('month');
+					        var d = document.getElementById('day');
+					        
+					        var year = y.options[y.selectedIndex].value;
+					        var month = m.options[m.selectedIndex+1].value;
+					        var day = d.options[d.selectedIndex].value;
+					        if (day == ' ') {
+					            var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
+					            d.options.length = 0;
+					            d.options[d.options.length] = new Option('--Date--',' ');
+					            for (var i = 1; i <= days; i++)
+					            d.options[d.options.length] = new Option(i,i);
+					        }
+					    });
+					</script>
+				</div>
+			</div>
 		</div>
 	</div>
-	</div>
-	</div>
-	<div class="row" id="footer">
-		<div class="col-lg-2 col-md-3 col-sm-3 col-xs-3">
-			<img src="image/logo.png" width="200px" height="100px">
-		</div>
-		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
-			<p>Email: <a href="#">abc@gmail.com</a></p>
-			<p>Địa chỉ: 268, Lý Thường Kiệt, Phường 14, quận 10, TP.HCM</p>
-			<p>Số điện thoại: 0986.980.391</p>
-			<p>
-				<a href="https://www.facebook.com/" alt="facebook"><img src="image/face_icon.png" width="40px" height="40px"></a>
-				<a href="https://twitter.com/" alt="switter"><img src="image/twitter_icon.png" width="40px" height="40px"></a>
-			</p>
-		</div>
-	</div>
+	<?php
+		if(isset($_POST["submit"])){
+			$fullname = mysqli_real_escape_string($conn, $_POST["fullname"]);
+			$username = mysqli_real_escape_string($conn, $_POST["username"]);
+			$email = mysqli_real_escape_string($conn, $_POST["email"]);
+			$pword = mysqli_real_escape_string($conn, $_POST["password"]);
+			$password = mysqli_real_escape_string($conn, md5($_POST["password"]));
+        	$re_password = mysqli_real_escape_string($conn, md5($_POST["re-password"]));
+			$reg_pwd = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/";
+        	
+        	$query = mysqli_query($conn, "select * from user where `userName` = '$username'");
+        	$row = mysqli_fetch_array($query);
+        	$query1 = mysqli_query($conn, "select * from user where `email` = '$email'");
+        	$row1 = mysqli_fetch_array($query1);
+        	if(empty($fullname) || empty($username) || empty($email) || empty($password) || empty($re_password)){
+        		echo "<script>document.getElementById('error').innerHTML='Please enter full infomation.';</script>";
+        	}
+        	else{
+        		if(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+	        		echo "<script>document.getElementById('error').innerHTML='Email invalidate. Please enter infomation.';</script>";
+        		}
+        		else if(!preg_match($reg_pwd, $pword, $matchs)){
+        			echo "<script>document.getElementById('error').innerHTML='The password has at least 6 characters and includes letters, numbers and special characters. Please enter infomation.';</script>";
+        		}
+        		else if($row){
+        			echo "<script>document.getElementById('error').innerHTML='Username already existed. Please enter infomation.';</script>";
+        		}
+        		else if($row1){
+        			echo "<script>document.getElementById('error').innerHTML='Email already existed. Please enter infomation.';</script>";
+        		}
+        		else if($re_password != $password){
+        			echo "<script>document.getElementById('error').innerHTML='Re-password does not match password. Please enter infomation.';</script>";
+        		}
+        		else{
+        			$sex = mysqli_real_escape_string($conn, $_POST["sex"]);
+        			$date = mysqli_real_escape_string($conn, $_POST["day"]);
+        			$month = mysqli_real_escape_string($conn, $_POST["month"]);
+        			$year = mysqli_real_escape_string($conn, $_POST["year"]);
+        			$d = mktime(0, 0, 0, $month, $date, $year);
+        			$birthday = date("Y-m-d h:i:sa", $d);
+        			
+        			date_default_timezone_set('Asia/Ho_Chi_Minh');
+        			$createDate = date("Y-m-d h:i:sa");
+        			
+        			$sql = "INSERT INTO user(
+					            userName,
+					            fullName,
+					            email,
+					            password,
+					            sex,
+					            birthday,
+					            createDay,
+					            levelGame,
+					            score,
+					            coin
+					        )
+					        VALUES(
+					            '$username',
+					            '$fullname',
+					            '$email',
+					            '$password',
+					            '$sex',
+					            '$birthday',
+					            '$createDate',
+					            1,
+					            0,
+					            0
+					        )";
+					if(mysqli_query($conn, $sql)){
+						echo "<script>alert('Successful registration.');
+									window.location='login.html'</script>";
+					}
+					else{
+						echo "<script>alert('Registration failed.');</script>"; 
+					}
+        		}
+        	}
+		}
+		
+		else if(isset($_POST["reset"])){
+			echo "<script>window.location = 'top.html';</script>";
+		}
+	include "include/feedback.html";
+	include "include/footer.html";
+	?>
 </body>
 </html>

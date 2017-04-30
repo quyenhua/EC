@@ -1,0 +1,53 @@
+<div class="feedback" id="feedback-box"><h4>Feedback</h4>		
+	<a class="close" href="#">
+		<img class="img-close" title="Close Window" alt="Close" src="image/close.png" width="25px" height="25px" />
+	</a>
+	<form class="feedback-content" method="post" action="">
+		<label class="username">
+			<label for="username">Username (If your have an account) or Email</label>
+			<input id="username" type="text" autocomplete="on" name="username" placeholder="" value="" />
+		</label>
+		<label class="contentname">
+			<label for="contentid">Topic</label>
+			<input id="contentid" type="text" autocomplete="on" name="content" placeholder="" value="" />
+		</label>
+		<label class="content-form">
+			<label for="contentdet">Content</label>
+			<textarea id="contentdet"></textarea>
+		</label>
+		<input style="width: 100px" class="button submit-button" type="submit" name="submit1" value="Send"/>
+	</form>
+	<?php
+	if(isset($_POST["submit1"])){
+		echo "<script> alert('Sent feedback!!!');
+		 	$('#over, .feedback').fadeOut(300 , function() {
+		 		$('#over').remove();
+		 	});</script>";
+		//echo "a";
+	}?>
+</div>
+<a class="feedback-window btn-top" href="#feedback-box" alt="Feedback"><img src="image/feedback.png" title="Feedback" width="50px" height="50px"></a>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$('a.feedback-window').click(function() {
+	        //lấy giá trị thuộc tính href - chính là phần tử "#feedback-box"
+	        var feedbackBox = $(this).attr('href');
+		    //cho hiện hộp đăng nhập trong 300ms
+		    $(feedbackBox).fadeIn(300);
+	    	// thêm phần tử id="over" vào sau body
+	    	$('body').append('<div id="over">');
+	    	$('#over').fadeIn(300);
+	    	return false;
+	    });
+
+		// khi click đóng hộp thoại
+		$(document).on('click', "a.close, #over", function() {
+			if(confirm("Do you want to close feedback box?") == true){
+			$('#over, .feedback').fadeOut(300 , function() {
+				$('#over').remove();
+			});
+			return false;
+		}
+		});
+	});
+</script>

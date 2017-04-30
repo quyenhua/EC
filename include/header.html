@@ -1,6 +1,25 @@
+<?php
+	session_start();
+	include "./connect/connect.php";
+?>
 <div id='sketch-holder' style="float:left"></div>
 <div class="row" id="header">
-	<div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+	<div id="username">
+		<?php
+			if(empty($_SESSION["userId"])){
+				echo "chưa đăng nhập";
+			}
+			else{
+				$id = intval($_SESSION["userId"]);
+				$query = mysqli_query($conn, "select * from user where `iduser` = '$id'");
+				$row = mysqli_fetch_array($query);
+				if($row){
+					echo "<img id='user' src='image/img_user.jpeg' width='30px' height='30px'><a id='username' href='./infomation.html'>Hello " . $row["userName"] . "</a>";
+				}
+			}
+		?>
+	</div>
+	<div class="col-lg-offset-2 col-md-offset-2 col-sm-offset-2 col-xs-offset-2 col-lg-7 col-md-7 col-sm-7 col-xs-7">
 		<img src="./image/logo.png">
 	</div>
 </div>

@@ -1,7 +1,5 @@
 #header{
-	margin-left: 370px;
-	height: 200px;
-	margin-top: 50px;
+	height: 150px;
 }
 
 #over {
@@ -144,4 +142,16 @@ canvas {
 	position:absolute;
 	left:0px;
 	top:0px;
+}
+
+#user{
+	border-radius: 15px;
+	margin: 10px;
+}
+#username{
+	color: #0000aa;
+	font-weight: bold;
+	text-align: right; 
+	margin-right: 20px;
+	font-size:1.1em;
 }
