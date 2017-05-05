@@ -11,9 +11,9 @@
 			}
 			else{
 				$id = intval($_SESSION["userId"]);
-				$query = mysqli_query($conn, "select * from user where `iduser` = '$id'");
-				$row = mysqli_fetch_array($query);
-				if($row){
+				$query_user = mysqli_query($conn, "select * from user where `iduser` = '$id'");
+				$row_user = mysqli_fetch_array($query);
+				if($row_user){
 					echo "<img id='user' src='image/img_user.jpeg' width='30px' height='30px'><a id='username' href='./infomation.html'>Hello " . $row["userName"] . "</a>";
 				}
 			}
