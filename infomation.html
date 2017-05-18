@@ -33,16 +33,6 @@
 		#content{
 			margin: 20px;
 		}
-		.info{
-			font-weight: bold;
-			vertical-align: bottom;
-		}
-		.left{
-			text-align: right;
-		}
-		.info, .left{
-			font-size: 1.2em;
-		}
 		.not_empty{
 			color: #ff0000;
 		}
@@ -81,6 +71,15 @@
 		#content{
 			margin-left: 50px;
 		}
+		.mtop{
+			margin-top:10px;
+			width:80px;
+		}
+		.left{
+			padding-top: 7px;
+    		margin-bottom: 0;
+    		color: #aa5544;
+		}
 	</style>
 </head>
 <body>
@@ -88,180 +87,193 @@
 		include "include/header.html";
 	?>
 	<div class="row" id="content">
-		<div class="col-lg-7 col-md-7 col-sm-10 col-xs-12 margin">
+		<div class="col-lg-8 col-md-8 col-sm-10 col-xs-12 margin">
 			<div class="info-header"><h1>Infomation</h1></div>
 			<div class="row" id="content">
 				<?php
 					if($row_user){
 				?>
-				<form class="form-horizontal" action="<?php echo $_SERVER['PHP_SELF'];?>">
+				<form style="font-size: 1.2em;" class="form-horizontal" method="POST" action="<?php echo $_SERVER['PHP_SELF'];?>">
 					
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Fullname</label>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="name"><?php echo $row_user["fullName"] ?></span>
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Fullname</label>
+						<label id="fullName" name = "fullName" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left"><?php echo $row_user["fullName"]; ?></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Username</label>
+						<label id="userName" name = "userName" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left"><?php echo $row_user["userName"]; ?></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Email</label>
+						<label id="email" name = "email" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left"><?php echo $row_user["email"]; ?></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Phone number</label>
+						<label id="phone" name = "phone" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left"><?php echo $row_user["phoneNumber"]; ?></label>
+					</div>
+					
+					<div class="form-group">
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Sex</label>
+						<label id="sex" name = "sex" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left"><?php echo $row_user["sex"]; ?></label>
+					</div>
+
+					<?php
+						$birthday = $row_user["birthday"];
+						$d = strtotime($birthday);
+						$year = date("Y", $d);
+						$month = date("m", $d);
+						$date = date("d", $d);
+					?>
+					<div class="form-group">
+						<label class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Birthday</label>
+						<label id="birthday" name = "birthday" class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left">
+							<span id="datecur"><?php echo $date; ?></span> - 
+							<span id="monthcur"><?php echo $month; ?></span> - 
+							<span id="yearcur"><?php echo $year; ?></span>
+						</label>
+					</div>
+					<div class="form-group">
+						<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">
+							<button type="button" class="btn btn-primary" data-target="#change-info" onclick="UpdateInfo()">Change infomation</button>
+						</div>
+						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10 left">
+							<button type="button" class="btn btn-primary" data-target="#change-password" onclick="UpdatePass()">Change password</button>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Username</label>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="loginname"><?php echo $row_user["userName"] ?></span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Email</label>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="mail"><?php echo $row_user["email"] ?></span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Sex</label>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="sex"><?php echo $row_user["sex"] ?></span>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<label class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">Birthday</label>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<span class="info" id="bday"><span id="datecur">04</span> - <span id="monthcur">03</span> - <span id="yearcur">1995</span></span>
-						</div>
-					</div>
-					<br>
-					<div class="form-group">
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 left">
-							<button type="button" class="btn btn-primary" data-target="#change-info" onclick="UpdateInfo()">Thay đổi thông tin</button>
-						</div>
-						<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-							<button type="button" class="btn btn-primary" data-target="#change-password" onclick="UpdatePass()">Thay đổi mật khẩu</button>
-						</div>
-					</div>
-
-					<div class="form-group">
-						<div id="change-password" class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10 collapse" style="margin-top: 10px">
+						<div id="change-password" class="collapse" style="margin-top: 10px">
 							<div class="form-group">
-								<label for="new-pwd" class="col-sm-6 left control-label">Mật khẩu mới</label>
-								<div class="col-sm-6">
-									<input type="password" class="form-control" id="new-pwd" placeholder="">
+								<label for="new-pwd" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">New password</label>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+									<input type="password" class="form-control" name="newpass" id="new-pwd" placeholder="">
 								</div>
 							</div>
 							<div class="form-group">
-								<label for="re-pwd" class="col-sm-6 left control-label">Nhập lại mật khẩu mới</label>
-								<div class="col-sm-6">
-									<input type="password" class="form-control" id="re-pwd" placeholder="">
+								<label for="re-pwd" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Re-enter new password</label>
+								<div class="col-lg-6 col-md-6 col-sm-6 col-xs-8">
+									<input type="password" class="form-control" name="re-newpass" id="re-pwd" placeholder="">
 								</div>
 							</div>
 							<div class="form-group">
-								<div class="col-sm-6 left">
-									<button type="submit" class="btn btn-secondary" onclick="Change_pass()">Cập nhật</button>
+								<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">
+									<button type="submit" name="cancelpass" class="btn btn-secondary">Cancel</button>
 								</div>
-								<div class="col-sm-6">
-									<button type="reset" class="btn btn-secondary">Hủy</button>
+								<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 left" style="color: #000000;">
+									<button type="submit" name="updatepass" class="btn btn-secondary">Update</button>
 								</div>
 							</div>
 						</div>
 						<script type="text/javascript">
-							function Change_pass(){
-								var new_pass = document.getElementById("new-pwd").value;
-								var re_pass = document.getElementById("re-pwd").value;
-								var reg_pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
+							// function Change_pass(){
+							// 	var new_pass = document.getElementById("new-pwd").value;
+							// 	var re_pass = document.getElementById("re-pwd").value;
+							// 	var reg_pwd = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/;
 
-								if(new_pass == ""){
-									alert("Vui lòng nhập ô Mật khẩu mới!");
-								}
-								else if(re_pass == ""){
-									alert("Vui lòng nhập ô Nhập lại mật khẩu mới!");
-								}
-								else if(reg_pwd.test(new_pass)==false){
-									alert("Mật khẩu cần dài ít nhất 6 kí tự, có chữ cái, chữ số, ký tự đặc biệt");
-								}
-								else if(re_pass != new_pass){
-									alert("Mật khẩu không khớp, vui lòng nhập lại");
-								}
-								else{
-									if(confirm("Bạn thật sự muốn thay đổi mật khẩu?") == true){
-										alert("Thay đổi thành công!");
-										return true;
-									}
-									else return false;
-								}
-								return false;
-							}
+							// 	if(new_pass == ""){
+							// 		alert("Vui lòng nhập ô Mật khẩu mới!");
+							// 	}
+							// 	else if(re_pass == ""){
+							// 		alert("Vui lòng nhập ô Nhập lại mật khẩu mới!");
+							// 	}
+							// 	else if(reg_pwd.test(new_pass)==false){
+							// 		alert("Mật khẩu cần dài ít nhất 6 kí tự, có chữ cái, chữ số, ký tự đặc biệt");
+							// 	}
+							// 	else if(re_pass != new_pass){
+							// 		alert("Mật khẩu không khớp, vui lòng nhập lại");
+							// 	}
+							// 	else{
+							// 		if(confirm("Bạn thật sự muốn thay đổi mật khẩu?") == true){
+							// 			alert("Thay đổi thành công!");
+							// 			return true;
+							// 		}
+							// 		else return false;
+							// 	}
+							// 	return false;
+							// }
 						</script>
 					</div>
 
 					<div class="form-group">
-						<div id="change-info" class="col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1 col-lg-10 col-md-10 col-sm-10 col-xs-10 collapse" style="margin-top: 10px">
-							<form>
+						<div id="change-info" class="collapse" style="margin-top: 10px">
+							<form method="POST">
 								<div class="form-group">
-									<label for="hoten" class="col-sm-6 left
-									control-label">Họ và Tên</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" id="hoten" placeholder="">
+									<label for="hoten" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Fullname</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
+										<input type="text" class="form-control" name="nhoten" id="hoten" placeholder="">
 
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="tendangnhap" class="col-sm-6 left control-label">Tên đăng nhập</label>
-									<div class="col-sm-6">
-										<input type="text" class="form-control" id="tendangnhap" placeholder="">
+									<label for="tendangnhap" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Username</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
+										<input type="text" class="form-control" name="ntendangnhap" id="tendangnhap" placeholder="">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="email" class="col-sm-6 left control-label">Email</label>
-									<div class="col-sm-6">
-										<input type="email" class="form-control" id="email" placeholder="">
+									<label for="email" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Email</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
+										<input type="text" class="form-control" name="nemail" id="mail" placeholder="">
+									</div>
+								</div>
+								
+								<div class="form-group">
+									<label for="nphone" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Phone number</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
+										<input type="text" class="form-control" name="nphone" id="nphone" placeholder="">
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="gioitinh" class="col-sm-6 left control-label">Giới tính</label>
-									<div class="col-sm-6">
+									<label for="gioitinh" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Sex</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">
 										<label class="radio-inline">
-											<input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Nam
+											<input type="radio" name="gioitinh" id="inlineRadio1" value="Male"> Male
 										</label>
 										<label class="radio-inline">
-											<input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Nữ
+											<input type="radio" name="gioitinh" id="inlineRadio2" value="Female"> Female
 										</label>
 									</div>
 								</div>
 
 								<div class="form-group">
-									<label for="birthday" class="col-sm-6 control-label">Ngày sinh</label>
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<select name="year" id="year" size="1" style="width: 80px"></select>
-									</div>   
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-
-										<select name="month" id="month" size="1" style="width: 80px"></select>
-									</div>
-									<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-										<select name="day" id="day" size="1" style="width: 80px"></select>
+									<label for="birthday" class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">Birthday</label>
+									<div class="col-lg-6 col-md-6 col-sm-6 col-xs-10">	
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+											<select name="year" id="year" size="1" class="mtop"></select>
+										</div>   
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+	
+											<select name="month" id="month" size="1" class="mtop"></select>
+										</div>
+										<div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+											<select name="day" id="day" size="1" class="mtop"></select>
+										</div>
 									</div>
 								</div>
 								<br>
 								<div class="form-group">
-									<div class="col-sm-6 left">
-										<button type="submit" class="btn btn-secondary" onclick="Change_info()">Cập nhật</button>
-									</div>
-									<div class="col-sm-6">
-										<button type="reset" class="btn btn-secondary">Hủy</button>
-									</div>
+								<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 control-label">
+									<button type="submit" name="cancelinfo" class="btn btn-secondary">Cancel</button>
 								</div>
+								<div class="col-lg-5 col-md-5 col-sm-5 col-xs-5 left" style="color: #000000;">
+									<button type="submit" name="updateinfo" class="btn btn-secondary">Update</button>
+								</div>
+							</div>
 							</form>
 						</div>
 						<script type="text/javascript">
-
-							document.getElementById("hoten").value = document.getElementById("name").innerHTML;
-							document.getElementById("tendangnhap").value = document.getElementById("loginname").innerHTML;
-							document.getElementById("email").value = document.getElementById("mail").innerHTML;
-							var gt = document.getElementById("name").innerHTML;
-							if(gt == "Nam"){
+							document.getElementById("hoten").value = document.getElementById("fullName").innerHTML;
+							document.getElementById("tendangnhap").value = document.getElementById("userName").innerHTML;
+							document.getElementById("mail").value = document.getElementById("email").innerHTML;
+							document.getElementById("nphone").value = document.getElementById("phone").innerHTML;
+							var gt = document.getElementById("sex").innerHTML;
+							if(gt == "Male"){
 								document.getElementById("inlineRadio1").checked = true;
 							}
 							else{
@@ -276,23 +288,23 @@
 							var date = new Date();
 							var cur = date.getFullYear();
 
-							seYear.append('<option value="">- Năm -</option>');
+							seYear.append('<option value="">- Year -</option>');
 							for (var i = cur; i >= 1920; i--) {
 								if(i == yearcur){
-									seYear.append('<option value="' + i +'" selected>Năm '+i+'</option>');
+									seYear.append('<option value="' + i +'" selected>Year '+i+'</option>');
 									continue;
 								}
-								seYear.append('<option value="'+i+'">Năm '+i+'</option>');
+								seYear.append('<option value="'+i+'">Year '+i+'</option>');
 							};
 							var seMonth = $('#month');
 							var date = new Date();
 
 							var month=new Array();
 							for(var i = 0; i<12 ; i++){
-								month[i] = "Tháng " + (i+1);
+								month[i] = "Month " + (i+1);
 							}
 
-							seMonth.append('<option value="">-Tháng-</option>');
+							seMonth.append('<option value="">-Month-</option>');
 							for (var i = 0; i < 12; i++) {
 								if(i+1 == monthcur){
 									seMonth.append('<option value="' + i +'" selected>'+month[i]+'</option>');
@@ -319,52 +331,11 @@
 
 								var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
 								d.options.length = 0;
-								d.options[d.options.length] = new Option('-- Ngày --',' ');
+								d.options[d.options.length] = new Option('-- Date --',' ');
 								for (var i = 1; i <= days; i++)
 									d.options[d.options.length] = new Option(i,i);
 
 							});
-
-
-							function Change_info()
-							{ 
-								var hoten = document.getElementById('hoten').value;
-								var name = document.getElementById('tendangnhap').value;
-								var email = document.getElementById('email').value;
-								var reg_mail = /^[A-Za-z0-9]+([_\.\-]?[A-Za-z0-9])*@[A-Za-z0-9]+([\.\-]?[A-Za-z0-9]+)*(\.[A-Za-z]+)+$/;
-
-								if (hoten == ''){
-									alert('Vui lòng nhập Họ và Tên');
-								}
-								else if(name.length < 2 || name.length > 30)
-								{
-									alert('Độ dài Họ và Tên từ 2 đến 30 kí tự');
-								}
-								else if (name == ''){
-									alert('Vui lòng nhập Tên đăng nhập');
-								}
-								else if(name.length < 2 || name.length > 30)
-								{
-									alert('Độ dài Tên đăng nhập từ 2 đến 30 kí tự');
-								}
-								else if(email == ''){
-									alert('Vui lòng nhập email');
-								}
-								else if(reg_mail.test(email) == false){
-									alert('Email sai định dạng. Ex: example@abc.com');
-								}
-								else{
-									if(confirm("Bạn thật sự muốn thay đổi thông tin?") == true){
-										/*document.getElementById("name").innerHTML = hoten;
-										document.getElementById("loginname").innerHTML = name;
-										document.getElementById("email").innerHTML = email;*/
-										alert("Thay đổi thành công!");
-										return true;
-									}
-									else return false;
-								}
-								return false;
-							}
 						</script>
 					</div>
 				</form>
@@ -379,13 +350,13 @@
 						var month = m.options[m.selectedIndex+1].value;
 						
 						var days = (year == ' ' || month == ' ')? 31 : dayList(month,year);
-						seDay.append('<option value="0">- Ngày -</option>');
+						seDay.append('<option value="0">- Date -</option>');
 						for (var i = 1; i <= days; i++) {
 							if(i == datecur){
-								seDay.append('<option value="'+i+'" selected>Ngày '+i+'</option>');
+								seDay.append('<option value="'+i+'" selected>Date '+i+'</option>');
 								continue;
 							}
-							seDay.append('<option value="'+i+'">Ngày '+i+'</option>');
+							seDay.append('<option value="'+i+'">Date '+i+'</option>');
 						}
 					}
 
@@ -396,32 +367,97 @@
 				</script>
 				<?php
 				}
+				else{
+					echo "<p>You haven't loged in. Please login.</p>";
+				}
 				?>
 			</div>
 		</div>
 	</div>
-
-	<div class="feedback" id="feedback-box"><h4>Feedback</h4>		
-		<a class="close" href="#">
-			<img class="img-close" title="Close Window" alt="Close" src="image/close.png" width="25px" height="25px" />
-		</a>
-		<form class="feedback-content" action="#" method="post">
-			<label class="username">
-				<label for="username">Tên hoặc email</label>
-				<input id="username" type="text" autocomplete="on" name="username" placeholder="" value="" />
-			</label>
-			<label class="contentname">
-				<label for="contentid">Chủ đề</label>
-				<input id="contentid" type="text" autocomplete="on" name="content" placeholder="" value="" />
-			</label>
-			<label class="content-form">
-				<label for="contentdet">Nội dung</label>
-				<textarea id="contentdet"></textarea>
-			</label>
-			<button class="button submit-button" type="button">Gửi</button>
-		</form>
-	</div>
 	<?php
+		if(isset($_POST["updatepass"])){
+			$newpass = mysqli_real_escape_string($conn, $_POST["newpass"]);
+			$newpassmd5 = mysqli_real_escape_string($conn, md5($_POST["newpass"]));
+			$re_newpass = mysqli_real_escape_string($conn, md5($_POST["re-newpass"]));
+			$reg_pwd = "/^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{6,}$/";
+			if(empty($newpass) || empty($re_newpass)){
+				echo "<script>alert('Please enter full infomation.');</script>";
+			}
+			else if(!preg_match($reg_pwd, $newpass, $matchs)){
+        		echo "<script>alert('The password has at least 6 characters and includes letters, numbers and special characters. Please enter infomation.');</script>";
+        	}
+        	else if($re_newpass != $newpassmd5){
+        		echo "<script>alert('Re-password does not match password. Please enter infomation.');</script>";
+        	}
+        	else{
+        		$sql = "update user set `password` = '$newpassmd5' where `iduser` = '$id'";
+        		if(mysqli_query($conn, $sql)){
+        			echo "<script>alert('Successful updated.');</script>";
+        		}
+        		else{
+        			echo "<script>alert('Update failed.');</script>";
+        		}
+        	}
+		}
+		
+		else if(isset($_POST["updateinfo"])){
+			$nfullname = mysqli_real_escape_string($conn, $_POST["nhoten"]);
+			$nusername = mysqli_real_escape_string($conn, $_POST["ntendangnhap"]);
+			$nemail = mysqli_real_escape_string($conn, $_POST["nemail"]);
+			$nphone = mysqli_real_escape_string($conn, $_POST["nphone"]);
+        	if(empty($nfullname) || empty($nusername) || empty($nemail)){
+        		echo "<script>alert('Please enter full infomation.');</script>";
+        	}
+        	else{
+        		$query = mysqli_query($conn, "select * from user where `userName` = '$nusername' and `iduser` != '$id'");
+        		$row = mysqli_fetch_array($query);
+        		$query1 = mysqli_query($conn, "select * from user where `email` = '$nemail' and `iduser` !='$id'");
+        		$row1 = mysqli_fetch_array($query1);
+        	
+        		if(!filter_var($nemail, FILTER_VALIDATE_EMAIL)){
+	        		echo "<script>alert('Email invalidate. Please re-enter infomation.');</script>";
+        		}
+        		else if($row){
+        			echo "<script>alert('Username already existed. Please re-enter infomation.');</script>";
+        		}
+        		else if($row1){
+        			echo "<script>alert('Email already existed. Please re-enter infomation.');</script>";
+        		}
+        		
+	        	else if(!is_numeric($nphone)){
+	        		echo "<script>alert('Phone number not available. Please enter infomation.');</script>";
+	        	}
+        		else{
+        			$nsex = mysqli_real_escape_string($conn, $_POST["gioitinh"]);
+					$day = mysqli_real_escape_string($conn, $_POST["day"]);
+					$month = mysqli_real_escape_string($conn, $_POST["month"]);
+					$year = mysqli_real_escape_string($conn, $_POST["year"]);
+        			$d = mktime(0, 0, 0, $month + 1, $date, $year);
+        			$birthday = date("Y-m-d", $d);
+        			
+        			date_default_timezone_set('Asia/Ho_Chi_Minh');
+        			$recentDate = date("Y-m-d h:i:sa");
+        			
+        			$sql = "UPDATE user SET
+					            userName = '$nusername',
+					            fullName = '$nfullname',
+					            email = '$nemail',
+					            sex = '$nsex',
+					            birthday = '$birthday',
+					            updateDay = '$recentDate',
+					            phone = '$nphone'
+					  		WHERE iduser = '$id'";
+					if(mysqli_query($conn, $sql)){
+						echo "<script>alert('Successful registration.');
+									window.location='infomation.html'</script>";
+					}
+					else{
+						echo "<script>alert('Registration failed.');</script>"; 
+					}
+        		}
+        	}
+		}
+		
 		include "include/feedback.html";
 		include "include/footer.html";
 	?>

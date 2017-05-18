@@ -3,7 +3,8 @@ const BAR_YELLOW_PATH = "assets/baryellow.png";
 /*global p5*/
 var THREDHOLD = 2.5;
 var DELAY_NOTE = 125;
-const TIME_RUN = 1600;
+
+
 
 function Note(p, im, note, cx, cy, hs) {
 
@@ -75,7 +76,7 @@ function PlayActivity(p) {
         this.drawPerfect();
         this.drawScore();
         //  p.text(""+ combo,100, 100);
-        
+
     };
 
     this.drawBg = function() {
@@ -92,7 +93,7 @@ function PlayActivity(p) {
         p.textSize(80);
         p.textAlign(p.RIGHT, p.BOTTOM);
         p.text(p.dataSheet.songName, p.width - 150, 120);
-        dancer.draw( p.width - 140, 20);
+        dancer.draw(p.width - 140, 20);
     };
 
     this.drawScore = function() {
@@ -153,26 +154,25 @@ function PlayActivity(p) {
     };
 
 
-    var isStop =false;
-    
+    var isStop = false;
+
     this.update = function(deltaTime) {
         timex = p.millis() - startTime;
-        
+
         dancer.update(deltaTime);
-        
+
         if (!dancer.isAlive()) {
-            if (p.mouseY< 148 && p.mouseY>20 && p.mouseX>p.width - 140 &&p.mouseX<p.width - 32 ){
-             dancer = p.dataSheet.dancers[9];
-             if (p.mouseIsPressed)
-             {
-                 if (!isStop){
-                   p.popActivity();
-                   p.dataSheet.music.stop();
-                 } 
-                 isStop = true;
-             }
+            if (p.mouseY < 148 && p.mouseY > 20 && p.mouseX > p.width - 140 && p.mouseX < p.width - 32) {
+                dancer = p.dataSheet.dancers[9];
+                if (p.mouseIsPressed) {
+                    if (!isStop) {
+                        p.popActivity();
+                        p.dataSheet.music.stop();
+                    }
+                    isStop = true;
+                }
             }
-             else
+            else
             if (p.random(100) > 60)
                 dancer = p.random(p.dataSheet.dancers);
             dancer.reset();
@@ -332,7 +332,7 @@ function PlayActivity(p) {
 
     };
 }
-
+/*
 
 
 
@@ -360,14 +360,47 @@ function GenActivity(p) {
         []
     ];
     var sound;
-    var m = p.dataSheet.music;
-    sound = m;
-    timex = 0;
-    m.play();
-    startTime = p.millis();
+    var m;
+
 
     var energy = [0, 0, 0];
     var exp = [];
+    var musics;
+    var _this = this;
+    p.httpPost("../moonlight/api/allsong.php", "json", {}, function(res) {
+        musics = res.results;
+       for (var i = 0; i< 13; ++i) musics.shift();
+        _this.start();
+    });
+
+    this.start = function() {
+        if (musics.length < 1) return;
+        p.loadSound(musics[0].musicLink, function(mi) {
+            var genNotes = [];
+            timex = 0;
+            noteQueues = [
+                [],
+                [],
+                [],
+                [],
+                [],
+                []
+            ];
+            combo = 0;
+            comboTextS = 4;
+            sound = mi;
+            m = mi;
+            timex = 0;
+            sound.play();
+            startTime = p.millis();
+            fft = new p5.FFT();
+            energy = [0, 0, 0];
+            exp = [];
+        });
+
+    }
+
+
 
     this.draw = function() {
         this.drawBg();
@@ -390,7 +423,8 @@ function GenActivity(p) {
         p.fill(100, 255, 255);
         p.textSize(50);
         p.textAlign(p.RIGHT, p.BOTTOM);
-        p.text(p.dataSheet.songName, p.width - 20, 60);
+        if (musics)
+            p.text(musics[0].musicName, p.width - 20, 60);
     };
 
     this.drawScore = function() {
@@ -463,9 +497,16 @@ function GenActivity(p) {
         }
         this.updateNote(deltaTime);
         if (genNotes.length > 0)
-            if (!sound.isPlaying()) {
-                p.saveJSON(genNotes, "track08.json");
-                genNotes = [];
+            if (sound) {
+                if (!sound.isPlaying()) {
+                    var t = musics[0].nodesLink;
+                    p.saveJSON(genNotes, t.substring(t.lastIndexOf("/") + 1));
+                    musics.shift();
+                    genNotes = [];
+                    sound = false;
+                    _this.start();
+                }
+
             }
     };
 
@@ -624,7 +665,7 @@ function GenActivity(p) {
     };
 }
 
-
+*/
 
 
 

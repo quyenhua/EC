@@ -44,9 +44,9 @@ var context = function(p) {
       // p.dataSheet.songName = "Track 01";
        p.loadingAct.addText("loading...");
       p.dataSheet.loadMainData(function(){
-        p.replaceActivity(new SongActivity(p));
+        // p.replaceActivity(new SongActivity(p));
         
-      //p.startActivity(new GenActivity(p));
+      p.startActivity(new GenActivity(p));
         // p.replaceActivity(new GenActivity(p));
        
       });

@@ -10,78 +10,40 @@ var menuDa;
 var menuRadius;
 var buttonRadius;
 var buttonLink;
-var loginStatus;
 
 function preload() {
-    cir = loadImage("assets/i1.png");
-    menuFont = loadFont("assets/Menuetto.ttf");
-    var cc = loadJSON('https://ec2-34-209-82-231.us-west-2.compute.amazonaws.com/moonlight/api/session.php', function(cc) {
-        console.log(cc);
-        console.log(cc.userId);
-        console.log(cc);
-        if (cc.userId)
-            loginStatus = true;
-        else
-            loginStatus = false;
-        loadMenu();
-    });
-
+    cir = loadImage("../assets/i1.png");
+    menuFont = loadFont("../assets/Menuetto.ttf");
+    loadMenu();
 }
 
 function loadMenu() {
     //todo
     buttonRadius = 20;
     menuRadius = 200;
-    var bt;
-    if (loginStatus) {
-        bt = ["Play", "Logout", "Credit", "Information"];
-    }
-    else {
-        bt = ["Login", "Sign up"];
-    }
-    menuText = ["Home", ].concat(bt).concat(["Help"]);
-
-    menuCheck = [false, false, false, false, false, false];
-    menuHover = [false, false, false, false, false, false];
-    menuTextA = [0, 0, 0, 0, 0, 0];
+    menuText = ["Home", "Play", "Login","Sign up", "Information", "Help" ];
+    menuCheck = [false, false, false];
+    menuHover = [false, false, false];
+    menuTextA = [0, 0, 0, 0,0,0];
     menuDa = PI / 2.2 / menuText.length;
-    if (loginStatus) {
-        bt = [
-            loadImage("assets/play.png"),
-            loadImage("assets/logout.png"),
-            loadImage("assets/coin.png"),
-            loadImage("assets/info.png")
-        ];
-    }
-    else {
-        bt = [loadImage("assets/login.png"),
-            loadImage("assets/sign.png")
-        ];
-    }
-
     menuImg = [
-            loadImage("assets/home.png")
-        ]
-        .concat(bt).concat([loadImage("assets/help.png")]);
-
-    if (loginStatus) {
-        bt = [
-            "../moonlight/index.html",
-            "logout.html",
-            "coin.html",
-            "infomation.html"
-        ];
-    }
-    else {
-        bt = [
-            "login.html",
-            "register.html"
-        ];
-    }
+        loadImage("../assets/home.png"),
+        loadImage("../assets/play.png"),
+        loadImage("../assets/login.png"),
+        loadImage("../assets/sign.png"),
+        loadImage("../assets/info.png"),
+        loadImage("../assets/help.png")
+    ];
+    
     buttonLink = [
-        "top.html"
-    ].concat(bt).concat(["introduction.html"]);
-
+        "../top.html",
+        "../game.html",
+        "../login.html",
+        "../register.html",
+        "../infomation.html",
+        "../introduction.html"
+        ];
+    
 }
 
 function setup() {
@@ -120,22 +82,22 @@ function drawMenu() {
         translate(menuRadius * cos(d), menuRadius * sin(d));
         if (menuHover[i]) {
             scale(1.5);
-
-        }
-        if (mouseIsPressed && menuHover[i]) {
+            
+        } 
+        if (mouseIsPressed && menuHover[i]){
             stroke(200, 255, 20, 100);
             fill(255, 255, 30, 100);
         }
-        else {
-            stroke(20, 200, 255, 100);
+        else
+        {
+             stroke(20, 200, 255, 100);
             fill(30, 255, 255, 100);
         }
         ellipse(0, 0, buttonRadius * 2, buttonRadius * 2);
         image(menuImg[i], 0, 0, 25, 25);
         if (menuHover[i]) {
             if (menuTextA[i] < 90) menuTextA[i] += 10;
-        }
-        else {
+        } else {
             if (menuTextA[i] > 0) menuTextA[i] -= 10;
         }
         if (menuTextA[i] > 0) {
@@ -167,19 +129,6 @@ function distance(x0, y0, x1, y1) {
 }
 
 function mouseMoved() {
-    if (!menuText) return;
-    var d = PI / 4 - (menuText.length - 1) * menuDa / 2;
-    
-    for (var i = 0; i < menuText.length; ++i) {
-        var x = menuRadius * cos(d);
-        var y = menuRadius * sin(d);
-        menuHover[i] = distance(x, y, mouseX, mouseY) < buttonRadius;
-        d += menuDa;
-    }
-}
-
-function mousePressed() {
-    if (!menuText) return;
     var d = PI / 4 - (menuText.length - 1) * menuDa / 2;
     for (var i = 0; i < menuText.length; ++i) {
         var x = menuRadius * cos(d);
@@ -189,20 +138,33 @@ function mousePressed() {
     }
 }
 
-function mouseReleased() {
-    if (!menuText) return;
+function mousePressed()
+{
     var d = PI / 4 - (menuText.length - 1) * menuDa / 2;
     for (var i = 0; i < menuText.length; ++i) {
         var x = menuRadius * cos(d);
         var y = menuRadius * sin(d);
-        if (menuHover[i])
+        menuHover[i] = distance(x, y, mouseX, mouseY) < buttonRadius;
+        d += menuDa;
+    }
+}
+
+function mouseReleased()
+{
+    console.log(menuHover);
+    var d = PI / 4 - (menuText.length - 1) * menuDa / 2;
+     for (var i = 0; i < menuText.length; ++i) {
+         var x = menuRadius * cos(d);
+        var y = menuRadius * sin(d);
+            if (menuHover[i])
             onClickButton(i);
-
-
+            
+        
         menuHover[i] = false;
-    }
+     }
 }
 
-function onClickButton(id) {
+function onClickButton(id)
+{
     location.href = buttonLink[id];
 }
