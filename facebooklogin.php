@@ -1,7 +1,11 @@
 <?php
     session_start();
     $status = "Fail";
-  
+    if($_POST["gender"] == "Male")
+    $_POST["gender"] = "male";
+    if($_POST["gender"] == "Female")
+    $_POST["gender"] = "female";
+    
     // $deviceId =  'qwertyuiop';
     $link = mysqli_connect('localhost', 'root', '12345blue', 'moondb');
     mysqli_set_charset($link,'utf8');
@@ -33,7 +37,7 @@
         }  
     }
     
-     $sql = "SELECT * FROM `user` where email='".$_POST["email"].";";
+     $sql = "SELECT * FROM `user` where email='".$_POST["email"]."';";
      $results = array();
     $sqlresult = mysqli_query($link,$sql);
     
